@@ -1,0 +1,7 @@
+alias 'tmux'='tmux -u'
+alias 'vim'='nvim'
+alias 'ls'='lsd'
+alias 'll'='ls -l'
+alias 'la'='ls -la'
+alias 'lt'='ls --tree'
+alias 'cat'='bat'

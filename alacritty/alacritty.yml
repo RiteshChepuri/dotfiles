@@ -1,0 +1,26 @@
+live_config_reload: true
+
+startup_mode: Fullscreen
+
+window:
+  opacity: 0.8
+  padding:
+    x: 1
+    y: 1
+  dynamic_padding: false
+  decorations: none
+  dynamic_title: false
+
+font:
+  offset:
+    y: 0
+    x: 0
+  size: 7.0
+  normal:
+    family: FiraCode Nerd Font
+
+import:
+  - ~/.config/alacritty/themes/themes/omni.yaml
+
+key_bindings:
+  - { key: Q, mods: Control, chars: "exit \x0D" }
