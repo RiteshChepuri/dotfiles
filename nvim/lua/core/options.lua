@@ -1,0 +1,53 @@
+-- For Consciseness
+local o = vim.opt
+
+-- Line Numbers
+o.relativenumber = true
+o.number = true
+o.numberwidth = 2
+
+-- Tabs and Indentation
+o.tabstop = 2 -- 2 spaces for tabs
+o.shiftwidth = 2 -- 2 spaces for indent width
+o.expandtab = true -- Expand tab to Spaces
+o.softtabstop = 4 -- Setting tab to 4 while typing
+o.smartindent = false -- Indent current line
+
+-- Line wrapping
+o.wrap = false
+
+-- Search Settings
+o.ignorecase = true -- Ignore case while searching
+o.smartcase = true -- If you include mixed case in your search, it assumes you want case sesitive search
+o.hlsearch = true -- Highlight search results
+
+-- Cursor Line
+o.cursorline = false -- Highlight cursor line
+
+-- Appearence
+o.termguicolors = true
+o.background = "dark" -- Background set to dark which is required for various colorschemes
+o.signcolumn = "yes" -- Show Sign column so that text doesnt shift
+
+-- Clipboard
+o.clipboard:append("unnamedplus") -- Use system clipboard as default register
+
+-- Scroll off
+o.scrolloff = 8 -- Scroll off to 8
+o.sidescrolloff = 8 -- Sidescroll off to 8
+
+-- Scrolling
+o.ttyfast = true
+o.lazyredraw = false 
+
+-- Command Line
+o.cmdheight = 1
+
+-- Backup
+o.backup = false
+o.swapfile = false
+o.undofile = true
+
+-- Window split
+o.splitright = true
+o.splitbelow = true

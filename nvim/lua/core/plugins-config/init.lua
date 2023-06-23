@@ -1,0 +1,8 @@
+require('core.plugins-config.lualine')
+require('core.plugins-config.NeoSolarized')
+require('core.plugins-config.bufferline')
+require('core.plugins-config.colorizer')
+require('core.plugins-config.Comment')
+require('core.plugins-config.toggleterm')
+require('core.plugins-config.wilder')
+require('core.plugins-config.gitsigns')
