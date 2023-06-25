@@ -1,5 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" if not vim.loop.fs_stat(lazypath) then vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
@@ -122,7 +121,7 @@ local plugins = {
       stages = "static",
       timeout = 1500,
     },
-  },
+  }
 }
 
 local opts = {}
