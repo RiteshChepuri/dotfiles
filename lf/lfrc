@@ -35,11 +35,7 @@ cmd extract ${{
 
 # define a custom 'delete' command
  cmd delete ${{
-     set -f
-     printf "$fx\n"
-     printf "delete?[y/n]"
-     read ans
-     [ $ans = "y" ] && rm -rf $fx
+rm -rf $fx
  }}
 
  map <delete> delete # Mapping delete to delete files
