@@ -51,3 +51,11 @@ o.undofile = true
 -- Window split
 o.splitright = true
 o.splitbelow = true
+
+-- encoding
+o.encoding = "utf-8"
+o.fileencoding = "utf-8"
+
+o.winblend = 0
+o.wildoptions = "pum"
+o.pumblend = 5
