@@ -201,6 +201,43 @@ local plugins = {
         desc = "Remote Flash",
       },
     },
+  },
+  -- Autocompletion
+  {
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline"
+  },
+  -- Snippets
+  {
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets"
+  },
+  -- Managing and Installing Lsp server
+  {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim"
+  },
+  -- Configuting Lsp servers
+  {
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+    "onsails/lspkind.nvim"
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = {
+      {"nvim-tree/nvim-web-devicons"},
+      --Please make sure you install markdown and markdown_inline parser
+      {"nvim-treesitter/nvim-treesitter"}
+    }
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    "jayp0521/mason-null-ls.nvim"
   }
 }
 
