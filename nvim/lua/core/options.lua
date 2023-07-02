@@ -12,6 +12,7 @@ o.shiftwidth = 2 -- 2 spaces for indent width
 o.expandtab = true -- Expand tab to Spaces
 o.softtabstop = 4 -- Setting tab to 4 while typing
 o.smartindent = false -- Indent current line
+o.autoindent = true
 
 -- Line wrapping
 o.wrap = false
@@ -28,10 +29,11 @@ o.cursorline = false -- Highlight cursor line
 o.termguicolors = true
 o.background = "dark" -- Background set to dark which is required for various colorschemes
 o.signcolumn = "yes" -- Show Sign column so that text doesnt shift
-
+vim.opt.clipboard = ""
 -- Clipboard
-o.clipboard:append("unnamedplus") -- Use system clipboard as default register
-
+-- o.clipboard:append("unnamedplus") -- Use system clipboard as default register
+-- vim.g.clipboard = { name = "xsel", cache_enabled = true }
+--
 -- Scroll off
 o.scrolloff = 8 -- Scroll off to 8
 o.sidescrolloff = 8 -- Sidescroll off to 8
@@ -58,4 +60,23 @@ o.fileencoding = "utf-8"
 
 o.winblend = 0
 o.wildoptions = "pum"
-o.pumblend = 5
+
+local fn = vim.fn
+
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+-- remove this if there's an issue
+autocmd({ "BufReadPost", "BufNewFile" }, {
+  once = true,
+  callback = function()
+    -- In wsl 2, just install xclip
+    -- Ubuntu
+    -- sudo apt install xclip
+    -- Arch linux
+    -- sudo pacman -S xclip
+    vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+  end,
+  group = general,
+  desc = "Lazy load clipboard",
+})

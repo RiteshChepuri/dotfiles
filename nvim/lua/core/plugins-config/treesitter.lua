@@ -19,6 +19,7 @@ treesitter.setup({
 		"java",
 		"html",
 		"javascript",
+    "query"
 		"json",
 		"json5",
 		"lua",
@@ -26,6 +27,9 @@ treesitter.setup({
 		"python",
 		"tsx",
 		"typescript",
+    "bash",
+    "regex",
+    "markdown_inline"
 	},
 	auto_install = true,
 	rainbow = {
