@@ -55,3 +55,6 @@ abbr nr "npm run"
 
 # Battery Health
 abbr battery "upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+
+# Python related
+abbr py python3
