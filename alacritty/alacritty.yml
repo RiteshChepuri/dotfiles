@@ -24,3 +24,5 @@ import:
 
 key_bindings:
   - { key: Q, mods: Control, chars: "exit \x0D" }
+  - { key: E, mods: Control, chars: "lf \x0D" }
+  - { key: P, mods: Control, chars: ":GoToFile\n" } # go to file
