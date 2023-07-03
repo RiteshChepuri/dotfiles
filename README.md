@@ -9,3 +9,4 @@
 - lf - Command Line File Manager
 - Neofetch
 - i3 Window Manager
+    * i3 status
