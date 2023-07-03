@@ -9,5 +9,3 @@
 - lf - Command Line File Manager
 - Neofetch
 - i3 Window Manager
-- Polybar
-- Rofi
