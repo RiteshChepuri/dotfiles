@@ -11,8 +11,6 @@ o.tabstop = 2 -- 2 spaces for tabs
 o.shiftwidth = 2 -- 2 spaces for indent width
 o.expandtab = true -- Expand tab to Spaces
 o.softtabstop = 4 -- Setting tab to 4 while typing
-o.smartindent = false -- Indent current line
-o.autoindent = true
 
 -- Line wrapping
 o.wrap = false
@@ -35,12 +33,12 @@ vim.opt.clipboard = ""
 -- vim.g.clipboard = { name = "xsel", cache_enabled = true }
 --
 -- Scroll off
-o.scrolloff = 8 -- Scroll off to 8
+o.scrolloff = 10 -- Scroll off to 10
 o.sidescrolloff = 8 -- Sidescroll off to 8
 
 -- Scrolling
 o.ttyfast = true
-o.lazyredraw = false 
+o.lazyredraw = false
 
 -- Command Line
 o.cmdheight = 1
@@ -61,10 +59,7 @@ o.fileencoding = "utf-8"
 o.winblend = 0
 o.wildoptions = "pum"
 
-local fn = vim.fn
-
 local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
 
 -- remove this if there's an issue
 autocmd({ "BufReadPost", "BufNewFile" }, {
