@@ -28,10 +28,9 @@ o.termguicolors = true
 o.background = "dark" -- Background set to dark which is required for various colorschemes
 o.signcolumn = "yes" -- Show Sign column so that text doesnt shift
 vim.opt.clipboard = ""
--- Clipboard
--- o.clipboard:append("unnamedplus") -- Use system clipboard as default register
--- vim.g.clipboard = { name = "xsel", cache_enabled = true }
---
+o.winblend = 0 -- setting the winblend to 0
+o.wildoptions = "pum" -- Enabling pumblend
+
 -- Scroll off
 o.scrolloff = 10 -- Scroll off to 10
 o.sidescrolloff = 8 -- Sidescroll off to 8
@@ -56,11 +55,9 @@ o.splitbelow = true
 o.encoding = "utf-8"
 o.fileencoding = "utf-8"
 
-o.winblend = 0
-o.wildoptions = "pum"
-
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Clipboard
 -- remove this if there's an issue
 autocmd({ "BufReadPost", "BufNewFile" }, {
   once = true,
@@ -75,3 +72,6 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
   group = general,
   desc = "Lazy load clipboard",
 })
+
+-- file open popup
+vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
