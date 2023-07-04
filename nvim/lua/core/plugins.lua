@@ -39,54 +39,71 @@ local plugins = {
       require("nvim-tree").setup {}
     end,
   },
+  -- vim and tmux panes naviagtion
   {
     "christoomey/vim-tmux-navigator"
   },
+  -- Lualine
   {
     "nvim-lualine/lualine.nvim"
   },
+  -- Icons in the editor
   {
     "nvim-tree/nvim-web-devicons"
   },
+  -- Bufferline tabs
   {
     "akinsho/nvim-bufferline.lua"
   },
+  -- Git signs in the editor
   {
     "lewis6991/gitsigns.nvim"
   },
+  -- Colorizer
   {
     "norcalli/nvim-colorizer.lua"
   },
+  -- Undotree
   {
     "mbbill/undotree"
   },
+  -- Language support and syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter"
   },
+  -- Indentation lines in editor
   {
     "lukas-reineke/indent-blankline.nvim"
   },
+  -- Commenting
   {
     "numToStr/Comment.nvim"
   },
+  -- Quick file switch
   {
     "theprimeagen/harpoon"
   },
+  -- Lua function that many plugins use
   {
     "nvim-lua/plenary.nvim"
   },
+  -- floating terminal within neovim
   {
     "akinsho/toggleterm.nvim"
   },
+  -- File search and many more
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.1'
   },
+  -- Telescope extension
   {
     'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
   },
+  -- File browser
   {
     "nvim-telescope/telescope-file-browser.nvim"
   },
+  -- Used for colorscheme in neovim
   {
     "tjdevries/colorbuddy.nvim"
   },
@@ -100,6 +117,7 @@ local plugins = {
   --   opts = {
   --   }
   -- },
+  -- notification and command line interface
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -111,9 +129,11 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
   },
+  -- scroll bar which gives lsp updates
   {
     "petertriho/nvim-scrollbar"
   },
+  -- for making everything transparent
   {
     "xiyaowong/nvim-transparent",
     opts = {
@@ -123,6 +143,7 @@ local plugins = {
       },
     },
   },
+  -- Notifications in neovim
   {
     "rcarriga/nvim-notify",
     opts = {
@@ -131,21 +152,32 @@ local plugins = {
       timeout = 1500,
     },
   },
+  -- Gives the Startup time of Neovim
   {
     "dstein64/vim-startuptime"
   },
+  -- No Distraction editor
   {
     "folke/zen-mode.nvim"
   },
+  -- highlights the repeating words in the file 
   {
     "RRethy/vim-illuminate"
   },
+  -- Lsp Progress in fidget UI
   {
-    "folke/twilight.nvim"
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "VimEnter",
+    config = function()
+      require("core.plugins-config.fidget")
+    end,
   },
+  -- Playground from treesitter in editor
   {
     "nvim-treesitter/playground"
   },
+  -- Markdown preview
   {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
@@ -154,6 +186,7 @@ local plugins = {
     end,
     ft = { "markdown" },
   },
+  -- Advance search and movement
   {
     "folke/flash.nvim",
     event = "VeryLazy",
