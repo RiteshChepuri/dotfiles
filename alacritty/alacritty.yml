@@ -20,7 +20,7 @@ font:
     family: FiraCode Nerd Font
 
 import:
-  - ~/.config/alacritty/themes/themes/omni.yaml
+  - ~/.config/alacritty/themes/themes/aura.yaml
 
 key_bindings:
   - { key: Q, mods: Control, chars: "exit \x0D" }
