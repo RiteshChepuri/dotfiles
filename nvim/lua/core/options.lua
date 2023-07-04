@@ -4,7 +4,7 @@ local o = vim.opt
 -- Line Numbers
 o.relativenumber = true
 o.number = true
-o.numberwidth = 2
+o.numberwidth = 1
 
 -- Tabs and Indentation
 o.tabstop = 2 -- 2 spaces for tabs
