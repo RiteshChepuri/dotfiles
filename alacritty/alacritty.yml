@@ -27,3 +27,4 @@ key_bindings:
   - { key: E, mods: Control, chars: "lf \x0D" }
   - { key: P, mods: Control, chars: ":GoToFile\n" } # go to file
   - { key: G, mods: Control, chars: "lazygit \x0D" } # lazygit
+  - { key: T, mods: Control, chars: "tmux new -s (basename (pwd)) \x0D" } # start tmux session from the current folder 
