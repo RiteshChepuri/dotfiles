@@ -1,6 +1,6 @@
 set icons # Show icons
 set hidden true # Show hidden files and folders
-set drawbox # Layout box around columns
+# set drawbox # Layout box around columns
 set scrolloff 10 # Scroll Offset to 10
 
 map o $mimeopen --ask $f
