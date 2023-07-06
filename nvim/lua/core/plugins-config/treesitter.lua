@@ -11,7 +11,7 @@ treesitter.setup({
 
 	autotag = { enable = true },
 	ensure_installed = {
-    "bash",
+    	"bash",
 		"c",
 		"css",
 		"fish",
@@ -19,7 +19,7 @@ treesitter.setup({
 		"java",
 		"html",
 		"javascript",
-    "query"
+        "query",
 		"json",
 		"json5",
 		"lua",
@@ -27,9 +27,8 @@ treesitter.setup({
 		"python",
 		"tsx",
 		"typescript",
-    "bash",
-    "regex",
-    "markdown_inline"
+    	"regex",
+    	"markdown_inline"
 	},
 	auto_install = true,
 	rainbow = {
