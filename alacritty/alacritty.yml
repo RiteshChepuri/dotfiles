@@ -3,7 +3,7 @@ live_config_reload: true
 startup_mode: Fullscreen
 
 window:
-  opacity: 0.9
+  opacity: 0.85
   padding:
     x: 1
     y: 1
