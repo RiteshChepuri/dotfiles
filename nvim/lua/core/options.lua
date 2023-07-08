@@ -11,6 +11,7 @@ o.tabstop = 2 -- 2 spaces for tabs
 o.shiftwidth = 2 -- 2 spaces for indent width
 o.expandtab = true -- Expand tab to Spaces
 o.softtabstop = 4 -- Setting tab to 4 while typing
+o.smartindent = true -- Insert indents automatically
 
 -- Line wrapping
 o.wrap = false
@@ -75,3 +76,9 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
 
 -- file open popup
 vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
+
+-- Language specification
+o.spelllang = { "en" }
+
+-- Enable auto write
+o.autowrite = true
