@@ -57,7 +57,16 @@ local plugins = {
   },
   -- Git signs in the editor
   {
-    "lewis6991/gitsigns.nvim"
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      signs = {
+        add = { text = "" },
+        change = { text = "" },
+        delete = { text = "" },
+        untracked = { text = "" },
+      },
+    },
   },
   -- Colorizer
   {
@@ -162,7 +171,8 @@ local plugins = {
   },
   -- highlights the repeating words in the file 
   {
-    "RRethy/vim-illuminate"
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile" },
   },
   -- Lsp Progress in fidget UI
   {
@@ -242,6 +252,9 @@ local plugins = {
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
     "onsails/lspkind.nvim"
+  },
+  {
+    "jose-elias-alvarez/typescript.nvim"
   },
   {
     "glepnir/lspsaga.nvim",
