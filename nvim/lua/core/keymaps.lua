@@ -13,7 +13,7 @@ k.set("n","te",":tabedit ")
 k.set("n","tc",":tabclose<CR>")
 
 -- Clear searches
-k.set("n","<ESC>",":noh<CR>")
+k.set("n","<ESC>","<Cmd>noh<CR><ESC>")
 
 -- Plugins related keymaps
 
