@@ -1,19 +1,19 @@
 -- import mason plugin safely
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
-  return
+	return
 end
 
 -- import mason-lspconfig plugin safely
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
-  return
+	return
 end
 
 -- import mason-null-ls plugin safely
 local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
 if not mason_null_ls_status then
-  return
+	return
 end
 
 -- enable mason
@@ -29,29 +29,47 @@ require("mason").setup({
 })
 
 mason_lspconfig.setup({
-  -- list of servers for mason to install
-  ensure_installed = {
-    "html",
-    "cssls",
-    "tailwindcss",
-    "lua_ls",
-    "emmet_ls",
-    "pyright",
-    "marksman",
-    "jdtls",
-    "jsonls",
-  },
-  -- auto-install configured servers (with lspconfig)
-  automatic_installation = true, -- not the same as ensure_installed
+	-- list of servers for mason to install
+	ensure_installed = {
+		"html",
+		"cssls",
+		"tailwindcss",
+		"lua_ls",
+		"emmet_ls",
+		"pyright",
+		"marksman",
+		"tsserver",
+		"jdtls",
+		"jsonls",
+	},
+	-- auto-install configured servers (with lspconfig)
+	automatic_installation = true, -- not the same as ensure_installed
 })
 
 mason_null_ls.setup({
-  -- list of formatters & linters for mason to install
-  ensure_installed = {
-    "prettier", -- ts/js formatter
-    "stylua", -- lua formatter
-    "eslint_d", -- ts/js linter
-  },
-  -- auto-install configured formatters & linters (with null-ls)
-  automatic_installation = true,
+	-- list of formatters & linters for mason to install
+	ensure_installed = {
+		-- formatters
+		"prettier", -- ts/js formatter
+		"prettierd", -- ts/js formatter
+		"stylua", -- lua formatter
+		"astyle", -- c and java
+		"black", -- Python
+		"codespell", -- spell check
+		"fixjson", -- Json
+		"google_java_format", -- java
+		"eslint_d", -- js, jsreact,ts,tsreact
+
+		-- Diagnostics
+		"alex", -- Markdown
+		"checkstyle", -- java
+		"luacheck", -- lua
+		"stylelint", -- css
+		"cpplint", -- c and c++
+		"flake8", -- Python
+		"eslint_d", -- ts/js
+		"cspell", -- Spellchecker
+	},
+	-- auto-install configured formatters & linters (with null-ls)
+	automatic_installation = true,
 })
