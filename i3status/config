@@ -1,0 +1,54 @@
+general {
+  colors = true
+  color_good = "#00FF6F"
+  color_degraded = "#ebcb8b"
+  color_bad = "#FF4500"
+  interval = 1
+  separator = " | "
+}
+
+order += "volume master"
+order += "cpu_usage"
+order += "wireless _first_"
+order += "battery all"
+order += "tztime local"
+
+cpu_usage {
+  format = "   CPU: %usage "
+}
+
+wireless _first_ {
+        # faa8, nf-mdi-wifi
+        format_up = "   %quality %essid %ip "
+        # faa9, nf-mdi-wifi_off
+        format_down = " 󱚶  down"
+        color_good = '#00FF6F'
+        color_bad = '#FF4500'
+
+}
+
+battery all {
+        format = "%status %percentage %remaining "
+        integer_battery_capacity = true
+        threshold_type = "percentage"
+        low_threshold = "25"
+        # f58e nf-mdi-battery_plus; f58b nf-mdi-battery_minus; f578 nf-mdi-battery
+        status_chr = " 󰄌  CHR"
+        status_bat = "  BAT"
+        status_full = " FULL"
+}
+
+volume master {
+        # fa7d, nf-mdi-volume_high
+        format = "   %volume "
+        # fc5d, nf-mdi-volume_mute
+        # format_muted = " 󰖁  %volume" ??? gets reversed
+        format_muted = "%volume 󰖁 "
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+tztime local {
+        format = "   %d.%m.%Y %H:%M  || "
+}
