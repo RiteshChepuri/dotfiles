@@ -1,0 +1,46 @@
+live_config_reload: true
+
+startup_mode: Fullscreen
+
+window:
+  opacity: 0.85
+  padding:
+    x: 1
+    y: 1
+  dynamic_padding: false
+  decorations: none
+  dynamic_title: false
+
+font:
+  offset:
+    y: 0
+    x: 0
+  size: 7.0
+  normal:
+    family: FiraCode Nerd Font
+
+import:
+  - ~/.config/alacritty/themes/themes/iterm.yaml
+
+key_bindings:
+  - { key: W, mods: Command|Shift, chars: "\x02&" } # Kill tmux window
+  - { key: Q, mods: Command|Shift, chars: "\x02x" } # Kill tmux Pane
+  - { key: E, mods: Control|Shift, chars: "xdg-open . \x0D" } # Open files from current dir
+  - { key: L, mods: Control|Shift, chars: "lf \x0D" } # Open lf manager
+  - { key: O, mods: Command, chars: ":GoToFile\n" } # Go to file
+  - { key: O, mods: Command|Shift, chars: ":GoToCommand\n" } # run command
+  - { key: I, mods: Command, chars: "\x02c" } # create a new tmux window
+  - { key: T, mods: Command, chars: "tmux new -s (basename (pwd)) \x0D" } # Start tmux session from the current folder
+  - { key: P, mods: Command, chars: "\x02\x54" } # Open Tmux session manager
+  - { key: G, mods: Command, chars: "\x02g" } # Open Lazygit
+  - { key: Tab, mods: Control, chars: "\x02n" } # Switch to next window
+  - { key: Tab, mods: Command, chars: "\x02)" } # Switch to the next tmux session
+  - { key: Backslash, mods: Command, chars: "\x02|" } # Split tmux window vertically
+  - { key: Minus, mods: Command, chars: "\x02-" } # Split tmux window vertically
+  - { key: LBracket, mods: Command, chars: "\x02p" } # Switch to previous tmux window
+  - { key: RBracket, mods: Command, chars: "\x02n" } # Switch to next tmux window
+  - { key: Comma, mods: Command, chars: "\x02:" } # Enter the tmux command prompt
+  - { key: Period, mods: Command, chars: "\x02," } # rename the current tmux window
+  - { key: Key9, mods: Command, chars: "\x02(" } # Switch to previous tmux session
+  - { key: Key0, mods: Command, chars: "\x02)" } # Switch to next tmux session
+  - { key: F, mods: Command, chars: "fzf \x0D" } # Switch to next tmux session
