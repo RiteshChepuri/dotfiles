@@ -16,3 +16,8 @@ abbr bi "brew install"
 abbr bo "brew outdated"
 abbr bu "brew update"
 abbr bug "brew upgrade"
+
+# TMUX 
+abbr ta "tmux a"
+abbr tk "tmux kill-server"
+abbr td "tmux detach"
