@@ -186,9 +186,6 @@ bindsym $mod+r mode "resize"
 # Enabling transparency
 exec_always picom
 
-# Set wallpaper
-exec_always feh --bg-fill ~/.config/Wallpapers/beach.jpg
-
 # Select required area and copy to the Clipboard
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
