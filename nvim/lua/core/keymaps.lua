@@ -36,3 +36,6 @@ k.set({ "n", "x" }, "L", "g_")
 
 -- Undotree
 k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
+
+-- Nvim tree
+k.set("n", "<leader>e", "<Cmd>NvimTreeToggle<CR>")
