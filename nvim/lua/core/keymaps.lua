@@ -99,3 +99,8 @@ k.set("n", "<leader>gc", builtin.git_commits,	 {})
 k.set("n", "<leader>gb", builtin.git_bcommits,	 {})
 k.set("n", "<leader>gs", builtin.git_status,	 {})
 
+-- file open popup
+vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
+
+-- Open Command Popup
+vim.cmd([[command! -nargs=0 GoToCommand :Telescope commands]])
