@@ -62,3 +62,4 @@ o.spelllang = { "en" }
 -- Enable auto write
 o.autowrite = true
 
+vim.cmd([[colorscheme solarized-osaka]])
