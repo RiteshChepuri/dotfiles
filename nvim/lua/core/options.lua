@@ -63,3 +63,4 @@ o.spelllang = { "en" }
 o.autowrite = true
 
 vim.cmd([[colorscheme solarized-osaka]])
+vim.cmd([[colorscheme tokyonight]])
