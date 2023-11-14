@@ -39,3 +39,7 @@ k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- Nvim tree
 k.set("n", "<leader>e", "<Cmd>NvimTreeToggle<CR>")
+
+-- Bufferline
+k.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
+k.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
