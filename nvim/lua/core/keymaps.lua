@@ -32,3 +32,7 @@ k.set("n", "<A-O>", "O<ESC>")
 k.set({ "n", "x" }, "H", "^")
 k.set({ "n", "x" }, "L", "g_")
 
+-- Plugins related keymaps
+
+-- Undotree
+k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
