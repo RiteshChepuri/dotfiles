@@ -20,7 +20,7 @@ font:
     family: Code New Roman Nerd Font
 
 import:
-  - ~/.config/alacritty/themes/themes/iterm.yaml
+  - ~/.config/alacritty/themes/solarized.yaml
 
 key_bindings:
   - { key: W, mods: Command|Shift, chars: "\x02&" } # Kill tmux window
