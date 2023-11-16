@@ -41,4 +41,8 @@ return {
       -- refer to the configuration section below
     },
   },
+  {
+    "echasnovski/mini.indentscope",
+    enabled = false,
+  },
 }
