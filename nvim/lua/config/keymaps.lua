@@ -80,3 +80,6 @@ end)
 
 -- Undotree
 k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
+
+-- Markdown preview
+k.set("n", "<leader>mp", "<Cmd>MarkdownPreview<CR>")
