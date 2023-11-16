@@ -65,3 +65,9 @@ o.spelllang = { "en" }
 
 -- Enable auto write
 o.autowrite = true
+
+-- Open Command Popup
+vim.cmd([[command! -nargs=0 GoToCommand :Telescope commands]])
+
+-- file open popup
+vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
