@@ -77,3 +77,6 @@ end)
 k.set("n", "<A-8>", function()
   ui.nav_file(8)
 end)
+
+-- Undotree
+k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
