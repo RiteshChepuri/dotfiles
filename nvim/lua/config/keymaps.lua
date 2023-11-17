@@ -87,3 +87,18 @@ k.set("n", "<leader>mp", "<Cmd>MarkdownPreview<CR>")
 -- Diffview
 k.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
 k.set("n", "<leader>gq", "<Cmd>DiffviewClose<CR>")
+
+-- Telescope
+local builtin = require("telescope.builtin")
+k.set("n", "<leader>ff", builtin.find_files, {})
+k.set("n", "<leader>fg", builtin.live_grep, {})
+k.set("n", "<leader>fs", builtin.grep_string, {})
+k.set("n", "<leader>fd", builtin.diagnostics, {})
+k.set("n", "<leader>fk", builtin.keymaps, {})
+k.set("n", "<leader>fb", builtin.buffers, {})
+k.set("n", "<leader>fc", builtin.commands, {})
+k.set("n", "<leader>fh", "<Cmd>Telescope harpoon marks<CR>", {})
+k.set("n", "<leader>gf", builtin.git_files, {})
+k.set("n", "<leader>gc", builtin.git_commits, {})
+k.set("n", "<leader>gb", builtin.git_bcommits, {})
+k.set("n", "<leader>gs", builtin.git_status, {})
