@@ -228,7 +228,7 @@ assign [class="Microsoft-edge"] "2"
 assign [class="discord"] "5"
 assign [class="obsidian"] "4"
 
-for_window [class="Spotify"] move to workspace $ws6
+for_window [class="Spotify"] move to workspace $ws5
 for_window [class="Brave"] move to workspace $ws3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
