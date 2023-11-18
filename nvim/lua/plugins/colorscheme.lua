@@ -1,7 +1,6 @@
 return {
   "craftzdog/solarized-osaka.nvim",
-  lazy = true,
-  prority = 1000,
+  lazy = false,
   opts = function()
     return {
       transparent = true,
