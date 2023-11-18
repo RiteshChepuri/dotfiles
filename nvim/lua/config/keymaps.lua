@@ -82,7 +82,7 @@ end)
 k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- Markdown preview
-k.set("n", "<leader>mp", "<Cmd>MarkdownPreview<CR>")
+-- k.set("n", "<leader>mp", "<Cmd>MarkdownPreview<CR>")
 --
 -- Diffview
 k.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
