@@ -102,3 +102,6 @@ k.set("n", "<leader>gf", builtin.git_files, {})
 k.set("n", "<leader>gc", builtin.git_commits, {})
 k.set("n", "<leader>gb", builtin.git_bcommits, {})
 k.set("n", "<leader>gs", builtin.git_status, {})
+
+-- Peek (Markdow previewer)
+k.set("n", "<leader>mp", "<Cmd>PeekOpen<CR>", {})
