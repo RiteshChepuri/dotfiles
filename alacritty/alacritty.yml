@@ -44,3 +44,4 @@ key_bindings:
   - { key: Key9, mods: Command, chars: "\x02(" } # Switch to previous tmux session
   - { key: Key0, mods: Command, chars: "\x02)" } # Switch to next tmux session
   - { key: F, mods: Command, chars: "fzf \x0D" } # Switch to next tmux session
+  - { key: Y, mods: Command, chars: "\x02y" } # split tmux window with 25% down
