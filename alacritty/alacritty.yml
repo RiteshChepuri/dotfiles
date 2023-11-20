@@ -24,7 +24,7 @@ import:
 
 key_bindings:
   - { key: W, mods: Command|Shift, chars: "\x02&" } # Kill tmux window
-  - { key: Q, mods: Command|Shift, chars: "\x02x" } # Kill tmux Pane
+  - { key: X, mods: Command, chars: "\x02x" } # Kill tmux Pane
   - { key: E, mods: Control|Shift, chars: "xdg-open . \x0D" } # Open files from current dir
   - { key: L, mods: Control|Shift, chars: "lf \x0D" } # Open lf manager
   - { key: O, mods: Command, chars: ":GoToFile\n" } # Go to file
