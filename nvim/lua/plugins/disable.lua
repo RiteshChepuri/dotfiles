@@ -50,7 +50,7 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     enabled = false,
-    ---@type Flash.Config
+    -- -@type Flash.Config
     opts = {},
     -- stylua: ignore
     keys = {
@@ -61,4 +61,6 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000, enabled = false },
+  { "RRethy/vim-illuminate", enabled = false },
 }
