@@ -38,46 +38,6 @@ k.set({ "n", "x" }, "L", "g_")
 
 -- Plugins related keymaps
 
--- Harpoon
-
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-
-k.set("n", "<leader>m", mark.add_file)
-k.set("n", "<leader>a", ui.toggle_quick_menu)
-
-k.set("n", "<A-1>", function()
-  ui.nav_file(1)
-end)
-
-k.set("n", "<A-2>", function()
-  ui.nav_file(2)
-end)
-
-k.set("n", "<A-3>", function()
-  ui.nav_file(3)
-end)
-
-k.set("n", "<A-4>", function()
-  ui.nav_file(4)
-end)
-
-k.set("n", "<A-5>", function()
-  ui.nav_file(5)
-end)
-
-k.set("n", "<A-6>", function()
-  ui.nav_file(6)
-end)
-
-k.set("n", "<A-7>", function()
-  ui.nav_file(7)
-end)
-
-k.set("n", "<A-8>", function()
-  ui.nav_file(8)
-end)
-
 -- Undotree
 k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
