@@ -15,12 +15,12 @@ font:
   offset:
     y: 0
     x: 0
-  size: 9.0
+  size: 8.0
   normal:
-    family: Code New Roman Nerd Font
+    family: FiraCode Nerd Font
 
 import:
-  - ~/.config/alacritty/themes/solarized.yaml
+  - ~/.config/alacritty/themes/tokyonight.yaml
 
 key_bindings:
   - { key: W, mods: Command|Shift, chars: "\x02&" } # Kill tmux window
