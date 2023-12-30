@@ -66,3 +66,6 @@ vim.cmd([[colorscheme onedark]])
 
 -- file open popup
 vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
+
+-- all nvim commands open
+vim.cmd([[command! -nargs=0 GoToCommand :Telescope commands]])
