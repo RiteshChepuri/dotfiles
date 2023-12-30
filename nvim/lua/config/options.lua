@@ -1,7 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
-
 -- For Consciseness
 local o = vim.opt
 
@@ -66,8 +62,7 @@ o.spelllang = { "en" }
 -- Enable auto write
 o.autowrite = true
 
--- Open Command Popup
-vim.cmd([[command! -nargs=0 GoToCommand :Telescope commands]])
+vim.cmd([[colorscheme onedark]])
 
 -- file open popup
 vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
