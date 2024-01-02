@@ -12,4 +12,6 @@ return{
     end
   },
   { 'echasnovski/mini.hipatterns', version = false },
+  { 'echasnovski/mini.basics', version = false },
+  { 'echasnovski/mini.bufremove', version = false },
 }
