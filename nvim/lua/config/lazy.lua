@@ -22,11 +22,11 @@ require("lazy").setup({
   defaults = {
     lazy = false,
   },
-  checker = { enabled = true}, -- automatically check for plugin updates
+  checker = { enabled = false}, -- automatically check for plugin updates
   change_detection = {
     -- automatically check for config file changes and reload the ui
-    enabled = true,
-    notify = true, -- get a notification when changes are found
+    enabled = false,
+    notify = false, -- get a notification when changes are found
   },
   performance = {
     cache = {
