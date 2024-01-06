@@ -1,16 +1,17 @@
-
-return{{
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
+return {
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup({})
+    end,
   },
-  config = function()
-    require("nvim-tree").setup {}
-  end,
-},
-{
-  "mbbill/undotree",
-  lazy = false
-}}
+  {
+    "mbbill/undotree",
+    lazy = false,
+  },
+}

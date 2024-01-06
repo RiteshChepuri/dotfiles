@@ -40,7 +40,7 @@ k.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 -- Keymaps related PLugins
 --
 -- nvimtree
-k.set("n", "<leader>e","<Cmd>NvimTreeToggle<CR>")
+k.set("n", "<leader>e", "<Cmd>NvimTreeToggle<CR>")
 
 -- Telescope
 local builtin = require("telescope.builtin")
@@ -52,29 +52,41 @@ k.set("n", "<leader>fk", builtin.keymaps, {})
 k.set("n", "<leader>fb", builtin.buffers, {})
 k.set("n", "<leader>fc", builtin.commands, {})
 -- k.set("n", "<leader>fh", "<Cmd>Telescope harpoon marks<CR>", {})
-k.set("n", "<leader>gf", builtin.git_files,	 {})
-k.set("n", "<leader>gc", builtin.git_commits,	 {})
-k.set("n", "<leader>gb", builtin.git_bcommits,	 {})
-k.set("n", "<leader>gs", builtin.git_status,	 {})
+k.set("n", "<leader>gf", builtin.git_files, {})
+k.set("n", "<leader>gc", builtin.git_commits, {})
+k.set("n", "<leader>gb", builtin.git_bcommits, {})
+k.set("n", "<leader>gs", builtin.git_status, {})
 
 -- Undotree
-k.set("n", "<leader>u","<Cmd>UndotreeToggle<CR>")
+k.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- markdown preview
-k.set("n", "<leader>mp","<Cmd>MarkdownPreview<CR>")
+k.set("n", "<leader>mp", "<Cmd>MarkdownPreview<CR>")
 
 -- Diffview
 k.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
 k.set("n", "<leader>gq", "<Cmd>DiffviewClose<CR>")
 
 -- trouble
-k.set("n", "<leader>xx", function() require("trouble").toggle() end)
-k.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-k.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-k.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-k.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-k.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+k.set("n", "<leader>xx", function()
+  require("trouble").toggle()
+end)
+k.set("n", "<leader>xw", function()
+  require("trouble").toggle("workspace_diagnostics")
+end)
+k.set("n", "<leader>xd", function()
+  require("trouble").toggle("document_diagnostics")
+end)
+k.set("n", "<leader>xq", function()
+  require("trouble").toggle("quickfix")
+end)
+k.set("n", "<leader>xl", function()
+  require("trouble").toggle("loclist")
+end)
+k.set("n", "gR", function()
+  require("trouble").toggle("lsp_references")
+end)
 
 -- Trouble
-k.set("n", "<leader>xt","<Cmd>TodoTrouble<CR>")
-k.set("n", "<leader>tt","<Cmd>TodoTelescope<CR>")
+k.set("n", "<leader>xt", "<Cmd>TodoTrouble<CR>")
+k.set("n", "<leader>tt", "<Cmd>TodoTelescope<CR>")

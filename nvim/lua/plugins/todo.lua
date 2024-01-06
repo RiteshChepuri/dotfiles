@@ -1,7 +1,7 @@
-return{
+return {
   "folke/todo-comments.nvim",
   event = "VeryLazy",
-  cmd = {  "TodoTelescope", "TodoLocList" },
+  cmd = { "TodoTelescope", "TodoLocList" },
   config = true,
   -- stylua: ignore
   keys = {
