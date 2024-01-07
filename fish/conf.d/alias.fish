@@ -1,6 +1,6 @@
 alias 'tmux'='tmux -u'
 alias 'vim'='nvim'
-alias 'ls'='lsd'
+alias 'ls'='lsd -1'
 alias 'll'='ls -l'
 alias 'la'='ls -la'
 alias 'lt'='ls --tree'
