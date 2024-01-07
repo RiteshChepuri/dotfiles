@@ -100,9 +100,6 @@ return {
           Search = { bg = "gold", inherit = false },
         },
       })
-
-      -- Set colorscheme after options
-      vim.cmd("colorscheme rose-pine")
     end,
   },
   {
