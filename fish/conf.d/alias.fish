@@ -1,5 +1,4 @@
 alias 'tmux'='tmux -u'
-alias 'vim'='nvim'
 alias 'ls'='lsd -1'
 alias 'll'='ls -l'
 alias 'la'='ls -la'
