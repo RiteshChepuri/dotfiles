@@ -47,3 +47,4 @@ totem
 copyq
 gh
 github-copilot
+nvim/pack/github/start/copilot.vim
