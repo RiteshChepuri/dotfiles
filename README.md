@@ -9,5 +9,6 @@
 - lf - Command Line File Manager
 - Neofetch
 - i3 Window Manager
-    * i3 status
+  - i3 status
 - Github CLI
+- Wezterm Terminal
