@@ -5,12 +5,15 @@ return {
 		{ "nvim-lua/plenary.nvim" },
 		{ "natecraddock/telescope-zf-native.nvim" },
 		{ "AckslD/nvim-neoclip.lua" },
+		{ "ThePrimeagen/harpoon" },
+		{ "nvim-lua/popup.nvim" },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
 		telescope.setup(opts)
 		telescope.load_extension("zf-native")
 		telescope.load_extension("neoclip")
+		telescope.load_extension("harpoon")
 	end,
 	opts = {
 		defaults = {
