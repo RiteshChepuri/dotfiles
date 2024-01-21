@@ -12,6 +12,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
+vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
 
 require("lazy").setup({
 	spec = {
