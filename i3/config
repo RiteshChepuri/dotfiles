@@ -216,14 +216,14 @@ bindsym $mod+Shift+e mode "(s)leep (h)ibernate (r)eboot (p)oweroff (l)ock (e)xit
 
 default_border pixel 0
 
-exec alacritty
+exec wezterm
 exec microsoft-edge
 exec brave
 exec obsidian
 exec discord
 exec Spotify
 
-assign [class="alacritty"] "1"
+assign [class="wezterm"] "1"
 assign [class="Microsoft-edge"] "2"
 assign [class="discord"] "5"
 assign [class="obsidian"] "4"
