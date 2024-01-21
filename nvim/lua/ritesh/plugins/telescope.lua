@@ -3,14 +3,12 @@ return {
 	lazy = false,
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		-- { "ThePrimeagen/harpoon" },
+		{ "natecraddock/telescope-zf-native.nvim" },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
 		telescope.setup(opts)
-		telescope.load_extension("fzf")
-		-- telescope.load_extension("harpoon")
+		telescope.load_extension("zf-native")
 	end,
 	opts = {
 		defaults = {
