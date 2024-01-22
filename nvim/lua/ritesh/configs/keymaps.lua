@@ -8,6 +8,9 @@ vim.keymap.set("n", "<A-O>", "O<ESC>")
 -- Open Netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
+-- Close a Buffer
+vim.keymap.set("n", "<A-e>", vim.cmd.bd)
+
 -- Clear searches
 vim.keymap.set("n", "<ESC>", "<Cmd>noh<CR><ESC>")
 
