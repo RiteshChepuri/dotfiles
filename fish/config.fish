@@ -21,4 +21,4 @@ starship init fish | source
 # Initialize zoxide
 zoxide init fish | source
 
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fish_add_path -m ~/.local/bin
