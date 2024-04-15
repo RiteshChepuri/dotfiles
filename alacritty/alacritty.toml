@@ -1,0 +1,136 @@
+import = ["/home/ritesh/.config/alacritty/themes/tokyonight.toml"]
+live_config_reload = true
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "Hack Nerd Font"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+chars = "\u0002&"
+key = "W"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002x"
+key = "X"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "xdg-open . \r"
+key = "E"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "lf \r"
+key = "L"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = """
+:GoToFile
+"""
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+:GoToCommand
+"""
+key = "O"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "I"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "tmux new -s (basename (pwd)) \r"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002T"
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002g"
+key = "G"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0002)"
+key = "Tab"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002|"
+key = "Backslash"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002-"
+key = "Minus"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002p"
+key = "LBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "RBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002:"
+key = "Comma"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002,"
+key = "Period"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002("
+key = "Key9"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002)"
+key = "Key0"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "fzf \r"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002y"
+key = "Y"
+mods = "Command"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+dynamic_title = false
+opacity = 0.7
+
+[window.padding]
+x = 5
+y = 5
