@@ -62,14 +62,18 @@
         "tooltip-format": "Connected to {essid}",
         "on-click": "rofi-wifi-menu.sh"
     },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}",
-        "format-muted": "󰖁",
+	"pulseaudio": {
+		"format": "{icon}  {volume}%",
+        	"format-muted": " 󰖁 Muted",
         "format-icons": {
-            "default": ["", "", "󰕾"]
+            "headphone": " ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
         },
-        "tooltip-format": "{volume}% volume"
+        "on-click": "pavucontrol"
     },
     "custom/power": {
         "format": "󰐥",
