@@ -50,3 +50,6 @@ github-copilot
 nvim/pack/github/start/copilot.vim
 Slack
 pavucontrol.ini
+systemd/user
+discord
+kwalletrc
