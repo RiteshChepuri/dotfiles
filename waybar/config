@@ -44,13 +44,17 @@
     },
     "battery": {
         "states": {
-            "warning": 20
+            "warning": 30,
+            "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
-        "format-charging": "󰂄",
-        "format-warning": "󰂃",
-        "tooltip-format": "{capacity}% capacity"
+        "format": "{icon} {capacity}%",
+        "format-charging": " 󰂄 {capacity}%",
+        "format-discharging": " 󰁿 {capacity}%",
+        "format-warning": "  󰂃 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-full": "󰁹 {capacity}%",
+        "format-icons": ["󰂄", "󰁹", "", "󰂂"]
     },
     "network": {
         "format-wifi": "󰤨",
