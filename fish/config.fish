@@ -15,3 +15,4 @@ starship init fish | source
 zoxide init fish | source
 
 fish_add_path -m ~/.config/local/bin
+fish_add_path -m ~/go/bin
