@@ -60,7 +60,7 @@
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
         "tooltip-format": "Connected to {essid}",
-        "on-click": "rofi-wifi-menu.sh"
+        "on-click": "wifi-menu"
     },
 	"pulseaudio": {
 		"format": "{icon}  {volume}%",
