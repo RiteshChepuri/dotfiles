@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if tmux list-sessions &>/dev/null; then
+    tmux attach -t ritesh
+else
+    tmux new -s ritesh
+fi
