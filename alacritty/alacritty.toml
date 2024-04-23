@@ -12,38 +12,11 @@ x = 0
 y = 0
 
 [[keyboard.bindings]]
-chars = "\u0002&"
-key = "W"
-mods = "Command|Shift"
-
-[[keyboard.bindings]]
-chars = "\u0002x"
-key = "X"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "xdg-open . \r"
-key = "E"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "lf \r"
-key = "L"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
 chars = """
 :GoToFile
 """
 key = "O"
 mods = "Command"
-
-[[keyboard.bindings]]
-chars = """
-:GoToCommand
-"""
-key = "O"
-mods = "Command|Shift"
 
 [[keyboard.bindings]]
 chars = "\u0002c"
@@ -66,23 +39,8 @@ key = "G"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u0002n"
-key = "Tab"
-mods = "Control"
-
-[[keyboard.bindings]]
 chars = "\u0002)"
 key = "Tab"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0002|"
-key = "Backslash"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0002-"
-key = "Minus"
 mods = "Command"
 
 [[keyboard.bindings]]
@@ -96,33 +54,8 @@ key = "RBracket"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u0002:"
-key = "Comma"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0002,"
-key = "Period"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0002("
-key = "Key9"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0002)"
-key = "Key0"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "fzf \r"
-key = "F"
-mods = "Command"
-
-[[keyboard.bindings]]
 chars = "\u0002y"
-key = "Y"
+key = "U"
 mods = "Command"
 
 [window]
@@ -134,3 +67,34 @@ opacity = 0.7
 [window.padding]
 x = 5
 y = 5
+
+[[keyboard.bindings]]
+chars = "\u00021"
+key = "Key1"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u00022"
+key = "Key2"
+mods = "Alt"
+
+
+[[keyboard.bindings]]
+chars = "\u00023"
+key = "Key3"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u00024"
+key = "Key4"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u00025"
+key = "Key1"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u00026"
+key = "Key6"
+mods = "Alt"
