@@ -26,6 +26,9 @@ local config = {
 		k.cmd_key("o", k.multiple_actions(":GoToFile")), -- Open go_to_file prompt
 		k.cmd_key("O", k.multiple_actions("nvim .")), -- Open vim netrw
 		k.alt_key("E", k.multiple_actions("lf")), -- Open lf terminal file browser
+		k.alt_key("w", k.multiple_actions(":wq")), -- Open lf terminal file browser
+		k.alt_key("Q", k.multiple_actions(":q!")), -- Open lf terminal file browser
+		k.alt_key("q", k.multiple_actions("exit")), -- Open lf terminal file browser
 		k.cmd_to_tmux_prefix("`", "n"), -- Next window
 		k.cmd_to_tmux_prefix("i", "c"), -- Open new tmux window
 		k.cmd_to_tmux_prefix("=", "%"), -- Split window vertically
