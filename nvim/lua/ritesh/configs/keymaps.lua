@@ -21,6 +21,9 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+-- Make the Current file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR> <CR>", { silent = true })
+
 -- Disable Space
 vim.keymap.set("n", "<Space>", "<NOP>")
 
