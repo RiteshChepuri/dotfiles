@@ -1,0 +1,9 @@
+#!/bin/sh
+
+pamixer --toggle-mute
+
+VOLUME=$(pamixer --get-volume)
+
+# dunstify --replace=11111  " Muted " --icon=~/.config/local/share/icons/dunst/volume-mute
+dunstify --replace=11111 "Muted" --icon=volume-mute
+

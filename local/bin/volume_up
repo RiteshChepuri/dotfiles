@@ -1,0 +1,7 @@
+#!/bin/sh
+
+pamixer --increase 5 | pamixer --unmute
+
+VOLUME=$(pamixer --get-volume)
+
+dunstify --replace=11111 --hints=int:value:"$VOLUME" " Volume at $VOLUME%" --icon=volume-up
