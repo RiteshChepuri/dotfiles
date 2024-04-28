@@ -70,9 +70,9 @@
     timeout = 5
 
 [urgency_critical]
-    background = "#181825"
-    foreground = "#CDD6F4"
-    frame_color = "#f38ba8"
+    background = "#ff0f0f"
+    foreground = "#181825"
+    frame_color = "#ff0f0f"
     timeout = 1000
 
 [volume]
