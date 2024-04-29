@@ -66,12 +66,12 @@
 		"format": "{icon}  {volume}%",
         	"format-muted": " 󰖁 Muted",
         "format-icons": {
-            "headphone": " ",
-            "headset": " ",
+            "headphone": "  ",
+            "headset": "  ",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["  ", "  ", "  "]
         },
         "on-click": "pavucontrol"
     },
