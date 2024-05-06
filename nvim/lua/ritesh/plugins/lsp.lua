@@ -138,7 +138,7 @@ return {
 			on_attach = on_attach,
 		})
 
-		-- configure python server
+		-- configure Bash server
 		lspconfig["bashls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
