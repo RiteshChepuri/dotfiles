@@ -25,7 +25,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Appearence
-vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 
 -- Scrolling
