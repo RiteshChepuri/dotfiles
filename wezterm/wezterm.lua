@@ -39,6 +39,7 @@ local config = {
 		k.cmd_to_tmux_prefix("Tab", ")"), -- Next tmux session
 		k.cmd_to_tmux_prefix("[", "p"), -- Previous tmux window
 		k.cmd_to_tmux_prefix("]", "n"), -- Next tmux window
+		k.cmd_to_tmux_prefix("y", "y"), -- Split tmux pane for 25%
 		k.alt_to_tmux_prefix("1", "1"), -- Nav to tmux window no 1
 		k.alt_to_tmux_prefix("2", "2"), -- Nav to tmux window no 1
 		k.alt_to_tmux_prefix("3", "3"), -- Nav to tmux window no 1
