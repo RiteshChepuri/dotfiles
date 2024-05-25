@@ -6,7 +6,7 @@ vim.keymap.set("n", "<A-o>", "o<ESC>")
 vim.keymap.set("n", "<A-O>", "O<ESC>")
 
 -- Open Netrw
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.OilToggle)
 
 -- Close a Buffer
 vim.keymap.set("n", "<A-e>", vim.cmd.bd)
@@ -38,12 +38,14 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set({ "n", "x" }, "H", "^")
 vim.keymap.set({ "n", "x" }, "L", "g_")
 
--- Undotree
-vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
+-- Plugin Related keymaps
 
 -- Diffview
 vim.keymap.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader>gq", "<Cmd>DiffviewClose<CR>")
+
+-- Undotree
+vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- Telescope
 local builtin = require("telescope.builtin")
@@ -59,4 +61,3 @@ vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
 vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
 vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
 vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
--- FIX: rewrite telescope keymaps
