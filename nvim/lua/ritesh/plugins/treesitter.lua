@@ -1,56 +1,59 @@
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		event = { "BufreadPre", "BufNewFile" },
-		build = ":TSUpdate",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			"windwp/nvim-ts-autotag",
-		},
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"css",
-				"fish",
-				"gitignore",
-				"java",
-				"html",
-				"javascript",
-				"query",
-				"json",
-				"json5",
-				"lua",
-				"markdown",
-				"python",
-				"tsx",
-				"typescript",
-				"regex",
-				"markdown_inline",
-			},
-			sync_install = true,
-			rainbow = {
-				enable = true,
-				extended_mode = true,
-				max_files_lines = nil,
-			},
-			auto_install = true,
-			autotag = {
-				enable = true,
-			},
-			indent = {
-				enable = true,
-			},
-			highlight = {
-				enable = true,
-			},
-		},
-	},
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		lazy = true,
-		opts = {
-			enable_autocmd = false,
-		},
-	},
+  "nvim-treesitter/nvim-treesitter",
+  event = { "BufReadPre", "BufNewFile" },
+  build = ":TSUpdate",
+  dependencies = {
+    "windwp/nvim-ts-autotag",
+  },
+  config = function()
+    -- import nvim-treesitter plugin
+    local treesitter = require("nvim-treesitter.configs")
+
+    -- configure treesitter
+    treesitter.setup({ -- enable syntax highlighting
+      highlight = {
+        enable = true,
+      },
+      -- enable indentation
+      indent = { enable = true },
+      -- enable autotagging (w/ nvim-ts-autotag plugin)
+      autotag = {
+        enable = true,
+      },
+      -- ensure these language parsers are installed
+      ensure_installed = {
+        "json",
+        "javascript",
+        "typescript",
+        "tsx",
+        "yaml",
+        "html",
+        "css",
+        "prisma",
+        "markdown",
+        "markdown_inline",
+        "svelte",
+        "graphql",
+        "bash",
+        "lua",
+        "vim",
+        "dockerfile",
+        "gitignore",
+        "query",
+        "vimdoc",
+        "c",
+        "fish",
+        "java",
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = false,
+          node_decremental = "<bs>",
+        },
+      },
+    })
+  end,
 }
