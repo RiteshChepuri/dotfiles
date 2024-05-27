@@ -12,7 +12,6 @@ return {
 		telescope.setup(opts)
 		telescope.load_extension("zf-native")
 		telescope.load_extension("neoclip")
-		telescope.load_extension("noice")
 	end,
 	opts = {
 		defaults = {
