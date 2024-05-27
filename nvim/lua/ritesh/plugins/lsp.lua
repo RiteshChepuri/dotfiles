@@ -4,6 +4,12 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{
+			"j-hui/fidget.nvim",
+			opts = {
+				-- options
+			},
+		},
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -11,6 +17,9 @@ return {
 
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+		-- import fidget nvim plugin to show lsp progress
+		require("fidget").setup({})
 
 		local keymap = vim.keymap -- for conciseness
 
