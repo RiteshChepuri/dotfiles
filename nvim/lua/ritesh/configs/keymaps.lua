@@ -38,6 +38,12 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set({ "n", "x" }, "H", "^")
 vim.keymap.set({ "n", "x" }, "L", "g_")
 
+-- Use Alt with h,j,k,l to navigate in insert mode without using Arrow keys
+vim.keymap.set("i", "<A-h>", "<Left>")
+vim.keymap.set("i", "<A-l>", "<Right>")
+vim.keymap.set("i", "<A-j>", "<Up>")
+vim.keymap.set("i", "<A-k>", "<Down>")
+
 -- Plugin Related keymaps
 
 -- Diffview
