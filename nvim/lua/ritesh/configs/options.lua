@@ -40,3 +40,5 @@ vim.opt.splitbelow = true
 -- Encoding
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
+
+vim.opt.cursorline = true
