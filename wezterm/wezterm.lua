@@ -11,7 +11,7 @@ local config = {
 		top = 10,
 		bottom = 10,
 	},
-	color_scheme = "Solarized Dark Higher Contrast",
+	color_scheme = "Nucolors",
 	adjust_window_size_when_changing_font_size = false,
 	debug_key_events = false,
 	warn_about_missing_glyphs = false,
