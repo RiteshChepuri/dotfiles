@@ -3,14 +3,17 @@ return {
 	lazy = false,
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
-		{ "natecraddock/telescope-zf-native.nvim" },
 		{ "AckslD/nvim-neoclip.lua" },
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		},
 		{ "nvim-lua/popup.nvim" },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
 		telescope.setup(opts)
-		telescope.load_extension("zf-native")
+		telescope.load_extension("fzf")
 		telescope.load_extension("neoclip")
 	end,
 	opts = {
