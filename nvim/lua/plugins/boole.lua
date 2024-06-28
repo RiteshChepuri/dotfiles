@@ -16,6 +16,7 @@ return {
 				{ "smart", "truncate" },
 				{ "left", "right" },
 				{ "top", "bottom" },
+				{ "is", "are" },
 			},
 		})
 	end,
