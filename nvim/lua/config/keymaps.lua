@@ -44,26 +44,10 @@ vim.keymap.set("i", "<A-l>", "<Right>")
 vim.keymap.set("i", "<A-j>", "<Up>")
 vim.keymap.set("i", "<A-k>", "<Down>")
 
--- Plugin Related keymaps
+-- next buffer
+vim.keymap.set("n", "b[", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "b]", "<cmd>bnext<cr>")
 
--- Diffview
-vim.keymap.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
-vim.keymap.set("n", "<leader>gq", "<Cmd>DiffviewClose<CR>")
-
--- Undotree
-vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
-
--- Telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fs", builtin.grep_string, {})
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
-vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fc", builtin.commands, {})
--- k.set("n", "<leader>fh", "<Cmd>Telescope harpoon marks<CR>", {})
-vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
-vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
-vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
-vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
+-- Shift text in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

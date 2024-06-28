@@ -1,3 +1,4 @@
+-- Collection of mini plugins
 return {
 	{
 		"echasnovski/mini.ai",

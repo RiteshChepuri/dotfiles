@@ -4,18 +4,10 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "AckslD/nvim-neoclip.lua" },
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-		},
 		{ "nvim-lua/popup.nvim" },
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
-	config = function(_, opts)
-		local telescope = require("telescope")
-		telescope.setup(opts)
-		telescope.load_extension("fzf")
-		telescope.load_extension("neoclip")
-	end,
 	opts = {
 		defaults = {
 			file_ignore_patterns = { ".git/", "node_modules" },
@@ -80,7 +72,27 @@ return {
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 		},
 	},
-	keys = function()
-		return {}
+
+	config = function(_, opts)
+		local telescope = require("telescope")
+		telescope.setup(opts)
+		telescope.load_extension("fzf")
+		telescope.load_extension("neoclip")
+		telescope.load_extension("ui-select")
+
+		-- Telescope
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+		vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>fs", builtin.grep_string, {})
+		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
+		vim.keymap.set("n", "<leader>fp", "<cmd>Telescope neoclip<cr>", {})
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+		vim.keymap.set("n", "<leader>fc", builtin.commands, {})
+		vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
+		vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
+		vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
+		vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
 	end,
 }

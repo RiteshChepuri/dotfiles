@@ -61,5 +61,11 @@ return {
 			})
 		end,
 	},
-	{ "sindrets/diffview.nvim" },
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			vim.keymap.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
+			vim.keymap.set("n", "<leader>gq", "<Cmd>DiffviewClose<CR>")
+		end,
+	},
 }
