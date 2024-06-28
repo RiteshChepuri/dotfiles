@@ -64,8 +64,12 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		config = function()
-			vim.keymap.set("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
-			vim.keymap.set("n", "<leader>gq", "<Cmd>DiffviewClose<CR>")
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>gd",
+				"<cmd>lua my_diffview_toggle()<CR>",
+				{ noremap = true, silent = true }
+			)
 		end,
 	},
 }
