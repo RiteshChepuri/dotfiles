@@ -12,3 +12,11 @@
   - i3 status
 - Github CLI
 - Wezterm Terminal
+- hyprland
+- waybar
+- rofi
+- tofi
+- swaylock
+- dunst
+- btop
+- polybar
