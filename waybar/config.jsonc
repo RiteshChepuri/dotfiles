@@ -82,10 +82,10 @@
 			"critical": 15
 		},
 		"format-time": "{H}:{M:02}",
-		"format": "<span color='#a6e2af'>{icon} </span> {capacity}%",
-		"format-charging": "<span color='#a6e2af'> </span> {capacity}%",
-		"format-charging-full": "<span color='#a6e2af'> </span> {capacity}%",
-		"format-full": "{icon}  {capacity}%",
+		"format": "<span color='#137151'> {icon} </span> {capacity}%",
+		"format-charging": "<span color='#a6e2af'> 󰁹  </span> {capacity}%",
+		"format-charging-full": "<span color='#ffffff'> 󰁹 </span> {capacity}%",
+		"format-full": "  󰁹 {capacity}%",
 		"format-alt": "{icon}  {power}W",
 		"format-icons": [
 			"",
