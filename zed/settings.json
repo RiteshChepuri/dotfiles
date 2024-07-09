@@ -17,9 +17,12 @@
     "show_nav_history_buttons": false
   },
   "enable_language_server": true,
-  "format_on_save": true,
+  "format_on_save": "on",
   "formatter": "language_server",
-  "indent_guides": true,
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
   "relative_line_numbers": true,
   "cursor_blink": false,
   "scrollbar": {
@@ -29,12 +32,13 @@
     "search_results": true
   },
   "use_autoclose": true,
-  {
-    "git": {
-      "git_gutter": "tracked_files",
-      "inline_blame": {
-        "enabled": true
-      }
+  "remove_trailing_whitespace_on_save": true,
+  "project_panel": {
+    "button": true,
+    "dock": "left",
+    "git_status": true,
+    "scrollbar": {
+      "show": "never"
     }
   }
 }
