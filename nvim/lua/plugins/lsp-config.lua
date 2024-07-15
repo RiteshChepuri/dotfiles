@@ -41,6 +41,7 @@ return {
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
+				-- NOTE: this only applies to the current buffer
 				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- smart rename
 
 				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- smart rename
