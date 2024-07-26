@@ -44,6 +44,7 @@ return {
 					"c",
 					"fish",
 					"java",
+					"php",
 				},
 				incremental_selection = {
 					enable = true,
@@ -57,5 +58,4 @@ return {
 			})
 		end,
 	},
-	{ "HiPhish/rainbow-delimiters.nvim" },
 }
