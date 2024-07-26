@@ -84,6 +84,15 @@ return {
 				on_attach = on_attach,
 			})
 
+			-- configure phpactor server for php
+			lspconfig.phpactor.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				root_dir = function(fname)
+					return vim.loop.cwd()
+				end,
+			})
+
 			-- configure luals server for lua language
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
