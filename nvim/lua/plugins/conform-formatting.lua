@@ -23,6 +23,7 @@ return {
 				java = { "astyle", "google-java-format" },
 				bash = { "beautysh", "shellharden" },
 				rust = { "rustfmt" },
+				php = { "php_cs_fixer" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
