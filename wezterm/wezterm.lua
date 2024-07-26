@@ -4,7 +4,8 @@ local act = wezterm.action
 
 local config = {
 	font_size = 12,
-	window_background_opacity = 0.5,
+	font = wezterm.font("JetBrainsMono NF"),
+	window_background_opacity = 0.7,
 	window_padding = {
 		left = 10,
 		right = 10,
