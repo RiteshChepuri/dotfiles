@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nvim $(fzf -m --preview="bat --color=always {}")
