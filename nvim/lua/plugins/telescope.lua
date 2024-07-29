@@ -7,6 +7,7 @@ return {
 		{ "nvim-lua/popup.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "nvim-telescope/telescope-ui-select.nvim" },
+		{ "debugloop/telescope-undo.nvim" },
 	},
 	opts = {
 		defaults = {
@@ -79,6 +80,7 @@ return {
 		telescope.load_extension("fzf")
 		telescope.load_extension("neoclip")
 		telescope.load_extension("ui-select")
+		telescope.load_extension("undo")
 
 		-- Telescope
 		local builtin = require("telescope.builtin")
