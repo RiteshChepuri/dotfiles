@@ -1,9 +1,0 @@
-#!/bin/sh
-
-CHOSEN=$(printf "Wifi\nBluetooth" | tofi --config "$HOME"/.config/tofi/powermenu-config)
-
-case "$CHOSEN" in
-    "Wifi") wifi-menu;;
-    "Bluetooth") blueman-manager ;;
-    *) exit 1 ;;
-esac
