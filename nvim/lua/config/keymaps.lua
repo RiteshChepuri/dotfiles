@@ -7,7 +7,7 @@ vim.keymap.set("n", "<A-o>", "o<ESC>")
 vim.keymap.set("n", "<A-O>", "O<ESC>")
 
 -- Open Netrw
-vim.keymap.set("n", "<leader>e", vim.cmd.OilToggle)
+vim.keymap.set("n", "<leader>e", "<Cmd>NvimTreeToggle<CR>")
 
 -- Close a Buffer
 vim.keymap.set("n", "<A-e>", vim.cmd.bd)
