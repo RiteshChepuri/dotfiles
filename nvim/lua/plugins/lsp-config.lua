@@ -11,6 +11,13 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"emmet_ls",
+					"tailwindcss",
+					"ts_ls",
+					"cssls",
+					"clangd",
+					"pyright",
+					"phpactor",
 				},
 			})
 		end,
