@@ -1,0 +1,8 @@
+.cache
+.cargo
+.local
+.tmux
+.zen
+.gnupg
+.npm
+.pki
