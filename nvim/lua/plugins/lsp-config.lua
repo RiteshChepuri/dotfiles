@@ -18,6 +18,7 @@ return {
 					"clangd",
 					"pyright",
 					"phpactor",
+					"bashls",
 				},
 			})
 		end,
@@ -93,6 +94,15 @@ return {
 
 			-- configure phpactor server for php
 			lspconfig.phpactor.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				root_dir = function(fname)
+					return vim.loop.cwd()
+				end,
+			})
+
+			-- configure bash server for php
+			lspconfig.bashls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 				root_dir = function(fname)
