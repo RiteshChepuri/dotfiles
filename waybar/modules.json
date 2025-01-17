@@ -59,7 +59,7 @@
   },
   "custom/power": {
     "format": " ⏻ ",
-    "on-click": "wofi-power-menu"
+    "on-click": "~/.config/local/bin/wofi-power-menu"
   },
   "bluetooth": {
     "format": " {status}",
