@@ -13,7 +13,6 @@ gnome-initial-setup-done
 pulse
 spotify
 syncthing
-lazygit
 tmux/plugins
 google-chrome
 gedit
@@ -90,3 +89,7 @@ qalculate
 obsidian
 btop/btop.log
 Notion
+Thunar
+xfce4/xfconf/xfce-perchannel-xml
+Popcorn-Time
+configstore
