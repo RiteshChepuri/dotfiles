@@ -14,8 +14,6 @@ starship init fish | source
 # Intialize zoxide
 zoxide init fish | source
 
-set -Ux FZF_DEFAULT_COMMAND "fd -E '.cache'"
-set -Ux FZF_DEFAULT_OPTS "-m --height 50% --border --layout=reverse "
 
 # env paths
 fish_add_path -m ~/.local/share/gem/ruby/3.2.0/bin

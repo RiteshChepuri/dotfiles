@@ -15,7 +15,7 @@
         "network",
         "bluetooth",
         "battery",
-        "battery#bat2",
+        "backlight",
         "clock",
         "custom/power",
     ],
