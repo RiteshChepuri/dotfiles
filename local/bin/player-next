@@ -1,0 +1,5 @@
+#!/bin/sh
+
+playerctl next
+
+dunstify --replace=11111 --icon=player-next "Next Track"

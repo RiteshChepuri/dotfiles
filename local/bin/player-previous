@@ -1,0 +1,5 @@
+#!/bin/sh
+
+playerctl previous
+
+dunstify --replace=11111 --icon=player-previous "Previous Track"
