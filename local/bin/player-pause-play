@@ -20,5 +20,9 @@ else
     message="Stopped"
 fi
 
+
+song_title=$(playerctl metadata title 2>/dev/null)
+message="$message - $song_title"
+
 # Send notification
 dunstify --replace=11111 --hints=int:value:50 --icon="$icon" "$message"
