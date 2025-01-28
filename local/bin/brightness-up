@@ -1,0 +1,11 @@
+#!/bin/sh
+
+brightnessctl s 10%+
+
+current=$(brightnessctl get)
+max=$(brightnessctl max)
+
+# Calculate the brightness percentage
+brightness=$(( current * 100 / max ))
+
+dunstify --replace=11111 --hints=int:value:"$brightness" --icon=brightness-up "Brightness: $brightness%"
