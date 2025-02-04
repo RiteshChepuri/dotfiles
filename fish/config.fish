@@ -14,6 +14,7 @@ starship init fish | source
 # Intialize zoxide
 zoxide init fish | source
 
+bind \t accept-autosuggestion
 
 # env paths
 fish_add_path -m ~/.local/share/gem/ruby/3.2.0/bin
