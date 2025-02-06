@@ -82,5 +82,9 @@ open_menu() {
     esac
 }
 
-# Toggle Wofi Menu
-pkill -x wofi || open_menu
+
+if [[ ! `pidof wofi` ]]; then
+    open_menu
+else
+    pkill wofi
+fi
