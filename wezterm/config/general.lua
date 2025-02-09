@@ -5,7 +5,7 @@ function M.apply(config)
 	config.font = wezterm.font("JetBrainsMono")
 	config.font_size = 13.0
 	config.color_scheme = "Catppuccin Mocha"
-	config.window_background_opacity = 0.95
+	config.window_background_opacity = 0.55
 	config.adjust_window_size_when_changing_font_size = false
 	config.debug_key_events = false
 	config.warn_about_missing_glyphs = false
