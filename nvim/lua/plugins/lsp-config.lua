@@ -26,7 +26,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 			local lspconfig = require("lspconfig")
 			local keymap = vim.keymap
 			local opts = { noremap = true, silent = true }
@@ -49,7 +49,7 @@ return {
 
 				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- previous diagnostics
 
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- next diagnostics
+				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- rename
 			end
 
 			-- configure emmet language server
