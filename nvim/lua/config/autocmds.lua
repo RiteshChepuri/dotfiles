@@ -1,31 +1,5 @@
 local api = vim.api
 
--- Better Open line Commands
--- Open Line above or below without leaving normal mode and leaving the current line
-vim.api.nvim_create_user_command("OpenLine", function(opts)
-	local where = opts.fargs[1]
-	if where == "below" then
-		vim.cmd("normal mzo`z")
-	else
-		vim.cmd("normal mzO`z")
-	end
-end, {
-	desc = "Better open line",
-	force = true,
-	nargs = 1,
-})
-
--- when in a comment and you press o to go into a new line, don't make that line a comment line.
-local comment_group = vim.api.nvim_create_augroup("fix comment enter", { clear = true })
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		vim.opt.formatoptions:remove({ "o" })
-		vim.opt.formatoptions:append({ "c" })
-	end,
-	group = comment_group,
-	pattern = "*",
-})
-
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -36,32 +10,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
--- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"PlenaryTestPopup",
-		"help",
-		"lspinfo",
-		"man",
-		"notify",
-		"qf",
-		"spectre_panel",
-		"startuptime",
-		"tsplayground",
-		"neotest-output",
-		"checkhealth",
-		"neotest-summary",
-		"neotest-output-panel",
-		"undotree",
-		"DiffviewFiles",
-		"vim",
-	},
-	callback = function(event)
-		vim.bo[event.buf].buflisted = false
-		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-	end,
-})
-
 -- Remove all trailing whitespaces on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 api.nvim_create_autocmd("BufWritePre", {
@@ -69,16 +17,16 @@ api.nvim_create_autocmd("BufWritePre", {
 	group = TrimWhiteSpaceGrp,
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	-- group = vim.api.nvim_create_augroup("auto_create_dir"),
-	callback = function(event)
-		if event.match:match("^%w%w+://") then
-			return
+-- Open files where you left of last time
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		local row, col = unpack(vim.api.nvim_buf_get_mark(0, '"'))
+		if row > 0 and row <= vim.api.nvim_buf_line_count(0) then
+			vim.api.nvim_win_set_cursor(0, { row, col })
 		end
-		local file = vim.loop.fs_realpath(event.match) or event.match
-		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
+	desc = "Restore cursor position",
 })
 
 -- Close certain file types with q
