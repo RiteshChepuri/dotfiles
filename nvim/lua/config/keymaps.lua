@@ -36,8 +36,8 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Go to start or end of line easier from jdhao config
-vim.keymap.set({ "n", "x" }, "H", "^")
-vim.keymap.set({ "n", "x" }, "L", "g_")
+vim.keymap.set({ "n", "x", "v" }, "H", "^")
+vim.keymap.set({ "n", "x", "v" }, "L", "g_")
 
 -- Use Alt with h,j,k,l to navigate in insert mode without using Arrow keys
 vim.keymap.set("i", "<A-h>", "<Left>")
