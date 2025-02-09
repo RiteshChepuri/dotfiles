@@ -1,9 +1,9 @@
 [global]
-    monitor = 0
-    follow = mouse
-    enable_posix_regex = false
+monitor = 0
+follow = mouse
+enable_posix_regex = false
     width = 300
-    height = (110,110)
+height = (110,110)
     notification_limit = 20
     origin = top-center
     offset = 0x0
@@ -68,23 +68,28 @@
     min_icon_size = 32
     max_icon_size = 48
 
-[urgency_low]
+    [urgency_low]
     timeout = 5
     background = "#1E1E2ECC"
     foreground = "#B0B0B0"
     highlight = "#007AFF"
     frame_color = "#1E1E1ECC"
 
-[urgency_normal]
+    [urgency_normal]
     timeout = 8
     background = "#1E1E2ECC"
     foreground = "#E0E0E0"
     highlight = "#007AFF"
     frame_color = "#1E1E2ECC"
 
-[urgency_critical]
+    [urgency_critical]
     timeout = 0
     background = "#FF453A"
     foreground = "#FFFFFF"
     highlight = "#FF9F0A"
     frame_color = "#FF453A"
+
+
+    [play_sound]
+    summary = "*"
+    script = "$HOME/.config/local/bin/alert"
