@@ -81,18 +81,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	end,
 })
 
-vim.api.nvim_create_user_command("OilToggle", function()
-	local current_buf = vim.api.nvim_get_current_buf()
-	local current_filetype = vim.api.nvim_buf_get_option(current_buf, "filetype")
-
-	if current_filetype == "oil" then
-		-- We use a command to go to the previous buffer
-		vim.cmd("b#")
-	else
-		-- Open oil if not already in an oil buffer
-		vim.cmd("Oil")
-	end
-end, { nargs = 0 })
+-- Close certain file types with q
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "help", "man", "qf", "lspinfo", "spectre_panel", "checkhealth" },
+	command = "nnoremap <buffer> q :close<CR>",
+	desc = "Close certain windows with q",
+})
 
 -- Enable spell check for markdown, git commit messages, and text files.
 vim.api.nvim_create_autocmd("FileType", {
