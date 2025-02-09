@@ -6,7 +6,7 @@ STYLE="$HOME/.config/wofi/style.css"
 
 wofi_command="wofi --show dmenu
 --conf ${CONFIG} --style ${STYLE} \
-    --width=600 --height=250 \
+    --width=600 --height=300 \
     --cache-file=/dev/null \
     --hide-scroll --no-actions \
     --define=matching=fuzzy"
@@ -14,23 +14,25 @@ wofi_command="wofi --show dmenu
 # Entries
 if $use_icons; then
     powermenu="   Powermenu"
-    wifi="    Wi-Fi"
+    wifi="  Wi-Fi"
     bluetooth="  Bluetooth"
+    wallpaper="󰸉  Wallpaper"
 else
     powermenu=" Powermenu"
     wifi="Wi-Fi"
     bluetooth=" Bluetooth"
+    wallpaper="Wallpaper"
 fi
 
 open_menu (){
-    options="$powermenu\n$wifi\n$bluetooth"
+    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper"
 
     chosen="$(echo -e "$options" | $wofi_command --prompt )"
     case $chosen in
         $powermenu)
             if [[ "$?" == 0 ]]; then
                 notify-send "Opening Powermenu "
-                wofi-power-menu
+                $HOME/.config/local/bin/wofi-power-menu
             else
                 exit
             fi
@@ -38,7 +40,7 @@ open_menu (){
         $wifi)
             if [[ "$?" == 0 ]]; then
                 notify-send "Opening Wi-Fi menu"
-                ~/.config/local/bin/wofi-wifi-menu
+                $HOME/.config/local/bin/wofi-wifi-menu
             else
                 exit
             fi
@@ -47,6 +49,14 @@ open_menu (){
             if [[ "$?" == 0 ]]; then
                 notify-send "Opening Blueman-Manager"
                 blueman-manager
+            else
+                exit
+            fi
+            ;;
+        $wallpaper)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Wallpaper menu"
+                $HOME/.config/local/bin/wofi-wallpaper
             else
                 exit
             fi
