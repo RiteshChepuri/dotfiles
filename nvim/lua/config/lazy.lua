@@ -23,6 +23,10 @@ vim.g.maplocalleader = " "
 
 vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
 
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
