@@ -1,14 +1,4 @@
 return {
-	{
-		"mbbill/undotree",
-		config = function()
-			vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
-		end,
-	},
-	{
-		"tzachar/highlight-undo.nvim",
-		opts = {
-			...,
-		},
-	},
+	"mbbill/undotree",
+	vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle),
 }
