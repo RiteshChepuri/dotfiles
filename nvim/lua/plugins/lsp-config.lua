@@ -38,8 +38,6 @@ return {
 			end
 
 			local on_attach = function(client, buffer)
-				opts.buffer = bufnr
-
 				opts.desc = "Show documentation for what is under cursor"
 				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
@@ -49,10 +47,9 @@ return {
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
-				-- NOTE: this only applies to the current buffer
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- smart rename
+				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- previous diagnostics
 
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- smart rename
+				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- next diagnostics
 			end
 
 			-- configure emmet language server
