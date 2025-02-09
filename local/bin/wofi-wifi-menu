@@ -1,99 +1,156 @@
 #!/usr/bin/env bash
 
-# Starts a scan of available broadcasting SSIDs
-# nmcli dev wifi rescan
+# Wi-Fi Selection & Connection Manager with Background Scanning, Notifications, and Signal Strength Priority
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-FIELDS=SSID,SECURITY
+FIELDS="SSID,SECURITY,SIGNAL"
 POSITION=0
 YOFF=0
 XOFF=0
 
 if [ -r "$DIR/config" ]; then
-	source "$DIR/config"
+    source "$DIR/config"
 elif [ -r "$HOME/.config/wofi/wifi" ]; then
-	source "$HOME/.config/wofi/wifi"
+    source "$HOME/.config/wofi/wifi"
 else
-	echo "WARNING: config file not found! Using default values."
+    echo "WARNING: Config file not found! Using default values."
 fi
 
-LIST=$(nmcli --fields "$FIELDS" device wifi list | sed '/^--/d')
-# For some reason wofi always approximates character width 2 short... hmmm
-RWIDTH=$(($(echo "$LIST" | head -n 1 | awk '{print length($0); }')*20))
-# Dynamically change the height of the wofi menu
+# Function to get Wi-Fi list, sorted by signal strength (strongest first)
+get_sorted_wifi_list() {
+    nmcli --fields "$FIELDS" device wifi list | sed '/^--/d' | sort -k3 -n -r
+}
+
+# Function to get current Wi-Fi connection status
+get_connection_status() {
+    nmcli -fields WIFI g
+}
+
+# Function to check if Wi-Fi is enabled
+wifi_enabled() {
+    [[ "$(get_connection_status)" =~ "enabled" ]]
+}
+
+# Function to enable auto-connect for known networks
+enable_autoconnect() {
+    local ssid="$1"
+    nmcli con modify "$ssid" connection.autoconnect yes
+}
+
+# Function to send desktop notifications
+send_notification() {
+    local title="$1"
+    local message="$2"
+    notify-send "$title" "$message"
+}
+
+# Auto-reconnect function (runs in background)
+auto_reconnect() {
+    while true; do
+        CURRSSID=$(LANGUAGE=C nmcli -t -f active,ssid dev wifi | awk -F: '$1 ~ /^yes/ {print $2}')
+        if [[ -z "$CURRSSID" ]]; then
+            send_notification "Wi-Fi Disconnected" "Attempting to reconnect..."
+            KNOWN_SSIDS=$(nmcli -t -f NAME connection show | grep -v "lo")
+            for SSID in $KNOWN_SSIDS; do
+                nmcli con up "$SSID" && send_notification "Wi-Fi Connected" "Reconnected to $SSID" && break
+            done
+        fi
+        sleep 10  # Check every 10 seconds
+    done &
+}
+
+# Function to periodically scan for new networks (background process)
+background_scan() {
+    while true; do
+        nmcli dev wifi rescan && echo "Scanning for new networks..." &>/dev/null
+        sleep 2  # Rescan every 2 seconds
+    done &
+}
+
+# Fetch and sort SSID list by signal strength
+LIST=$(get_sorted_wifi_list)
+RWIDTH=$(( $(echo "$LIST" | head -n 1 | awk '{print length($0)}') * 20 ))
+
 LINENUMBERS=$(echo "$LIST" | wc -l)
-LINENUM=LINENUMBERS+8
-# Gives a list of known connections so we can parse it later
+LINENUM=$(( LINENUMBERS + 8 ))
+
 KNOWNCON=$(nmcli connection show)
-# Really janky way of telling if there is currently a connection
-CONSTATE=$(nmcli -fields WIFI g)
+CONSTATE=$(get_connection_status)
 
 CURRSSID=$(LANGUAGE=C nmcli -t -f active,ssid dev wifi | awk -F: '$1 ~ /^yes/ {print $2}')
 
-if [[ ! -z $CURRSSID ]]; then
-	HIGHLINE=$(echo  "$(echo "$LIST" | awk -F "[  ]{2,}" '{print $1}' | grep -Fxn -m 1 "$CURRSSID" | awk -F ":" '{print $1}') + 1" | bc )
+# Limit menu size
+if [ "$LINENUM" -gt 8 ] && wifi_enabled; then
+    LINENUM=8
+elif ! wifi_enabled; then
+    LINENUM=1
 fi
 
-# HOPEFULLY you won't need this as often as I do
-# If there are more than 8 SSIDs, the menu will still only have 8 lines
-if [ "$LINENUM" -gt 8 ] && [[ "$CONSTATE" =~ "enabled" ]]; then
-	LINENUM=8
-elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	LINENUM=1
-fi
+# Wi-Fi toggle text
+TOGGLE="toggle on"
+wifi_enabled && TOGGLE="toggle off"
 
+# Menu options
+OPTIONS="$TOGGLE\nrefresh\nmanual\n$LIST"
 
-if [[ "$CONSTATE" =~ "enabled" ]]; then
-	TOGGLE="toggle off"
-elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	TOGGLE="toggle on"
-fi
+# Start background scanning
+background_scan
 
+# Start auto-reconnect in background
+auto_reconnect
 
-CHENTRY=$(echo -e "$TOGGLE\nmanual\n$LIST" | uniq -u | wofi -i -d --prompt "Wi-Fi SSID: " --lines "$LINENUM" --location "$POSITION" --yoffset "$YOFF" --xoffset "$XOFF" --width $RWIDTH)
-#echo "$CHENTRY"
-CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
-#echo "$CHSSID"
+# Show menu
+CHENTRY=$(echo -e "$OPTIONS" | uniq -u | wofi -i -d --prompt "Wi-Fi SSID: " --lines "$LINENUM" --location "$POSITION" --yoffset "$YOFF" --xoffset "$XOFF" --width "$RWIDTH")
 
-# If the user inputs "manual" as their SSID in the start window, it will bring them to this screen
-if [ "$CHENTRY" = "manual" ] ; then
-	# Manual entry of the SSID and password (if appplicable)
-	MSSID=$(echo "enter the SSID of the network (SSID,password)" | wofi -d "Manual Entry: " --lines 1)
-	# Separating the password from the entered string
-	MPASS=$(echo "$MSSID" | awk -F "," '{print $2}')
+# Exit if no selection
+[ -z "$CHENTRY" ] && exit 0
 
-	#echo "$MSSID"
-	#echo "$MPASS"
+CHSSID=$(echo "$CHENTRY" | sed 's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
 
-	# If the user entered a manual password, then use the password nmcli command
-	if [ "$MPASS" = "" ]; then
-		nmcli dev wifi con "$MSSID"
-	else
-		nmcli dev wifi con "$MSSID" password "$MPASS"
-	fi
+case "$CHENTRY" in
+    "manual")
+        MSSID=$(echo "Enter SSID (SSID,password)" | wofi -d "Manual Entry: " --lines 1)
+        MPASS=$(echo "$MSSID" | awk -F "," '{print $2}')
+        MSSID=$(echo "$MSSID" | awk -F "," '{print $1}')
 
-elif [ "$CHENTRY" = "toggle on" ]; then
-	nmcli radio wifi on
+        [ -z "$MSSID" ] && exit 0
 
-elif [ "$CHENTRY" = "toggle off" ]; then
-	nmcli radio wifi off
+        if [ -z "$MPASS" ]; then
+            nmcli dev wifi con "$MSSID" && send_notification "Wi-Fi Connected" "Connected to $MSSID"
+        else
+            nmcli dev wifi con "$MSSID" password "$MPASS" && send_notification "Wi-Fi Connected" "Connected to $MSSID"
+        fi
+        enable_autoconnect "$MSSID"
+        ;;
 
-else
+    "toggle on")
+        nmcli radio wifi on && send_notification "Wi-Fi Enabled" "Wi-Fi is now enabled."
+        ;;
 
-	# If the connection is already in use, then this will still be able to get the SSID
-	if [ "$CHSSID" = "*" ]; then
-		CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $3}')
-	fi
+    "toggle off")
+        nmcli radio wifi off && send_notification "Wi-Fi Disabled" "Wi-Fi is now disabled."
+        ;;
 
-	# Parses the list of preconfigured connections to see if it already contains the chosen SSID. This speeds up the connection process
-	if [[ $(echo "$KNOWNCON" | grep "$CHSSID") = "$CHSSID" ]]; then
-		nmcli con up "$CHSSID"
-	else
-		if [[ "$CHENTRY" =~ "WPA2" ]] || [[ "$CHENTRY" =~ "WEP" ]]; then
-			WIFIPASS=$(echo "if connection is stored, hit enter" | wofi -P -d --prompt "password" --lines 1 --location "$POSITION" --yoffset "$YOFF" --xoffset "$XOFF" --width $RWIDTH)
-		fi
-		nmcli dev wifi con "$CHSSID" password "$WIFIPASS"
-	fi
+    "refresh")
+        exec "$0" # Restart script to refresh SSID list
+        ;;
 
-fi
+    *)
+        if [ "$CHSSID" = "*" ]; then
+            CHSSID=$(echo "$CHENTRY" | sed 's/\s\{2,\}/\|/g' | awk -F "|" '{print $3}')
+        fi
+
+        ESCAPED_SSID=$(printf '%q' "$CHSSID")
+
+        if echo "$KNOWNCON" | grep -q "$CHSSID"; then
+            nmcli con up "$ESCAPED_SSID" && send_notification "Wi-Fi Connected" "Connected to $CHSSID"
+        else
+            if [[ "$CHENTRY" =~ "WPA2" ]] || [[ "$CHENTRY" =~ "WEP" ]]; then
+                WIFIPASS=$(echo "Enter password (if saved, press Enter)" | wofi -P -d --prompt "Password: " --lines 1 --location "$POSITION" --yoffset "$YOFF" --xoffset "$XOFF" --width "$RWIDTH")
+            fi
+            nmcli dev wifi con "$ESCAPED_SSID" password "$WIFIPASS" && send_notification "Wi-Fi Connected" "Connected to $CHSSID"
+        fi
+        enable_autoconnect "$ESCAPED_SSID"
+        ;;
+esac

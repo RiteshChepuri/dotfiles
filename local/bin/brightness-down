@@ -1,0 +1,21 @@
+
+#!/usr/bin/env bash
+
+# Decrease brightness by 10%
+brightnessctl s 10%-
+
+# Check if brightnessctl succeeded
+if [ $? -ne 0 ]; then
+    dunstify --replace=11111 --icon=dialog-error "Failed to adjust brightness"
+    exit 1
+fi
+
+# Get the current and max brightness
+current=$(brightnessctl get)
+max=$(brightnessctl max)
+
+# Calculate the brightness percentage
+brightness=$(( current * 100 / max ))
+
+# Show the updated brightness in a notification
+dunstify --replace=11111 --hints=int:value:"$brightness" --icon=brightness-down "Brightness: $brightness%"

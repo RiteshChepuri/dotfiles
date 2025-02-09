@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Increase brightness by 10%
+brightnessctl s 10%+
+
+# Check if brightnessctl succeeded
+if [ $? -ne 0 ]; then
+    dunstify --replace=11111 --icon=dialog-error "Failed to adjust brightness"
+    exit 1
+fi
+
+# Get the current brightness level and maximum brightness level
+current=$(brightnessctl get)
+max=$(brightnessctl max)
+
+# Calculate the brightness percentage
+brightness=$(( current * 100 / max ))
+
+# Notify the user with dunstify
+dunstify --replace=11111 \
+         --hints=int:value:"$brightness" \
+         --icon=brightness-up \
+         "Brightness: $brightness%"

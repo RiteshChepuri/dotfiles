@@ -5,7 +5,7 @@ local k = require("utils.keys")
 function M.apply(config)
 	config.keys = {
 		k.cmd_key("o", k.multiple_actions(":GoToFile")), -- Open go_to_file prompt
-		k.alt_key("E", k.multiple_actions("lf")), -- Open lf terminal file browser
+		k.alt_key("E", k.multiple_actions("yazi")), -- Open yazi terminal file browser
 		k.alt_key("f", k.multiple_actions("nf")), -- Open fzf prompt with nvim
 		k.alt_key("w", k.multiple_actions(":wq")), -- Open lf terminal file browser
 		k.alt_key("Q", k.multiple_actions(":q!")), -- Open lf terminal file browser

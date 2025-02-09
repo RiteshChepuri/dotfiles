@@ -1,43 +1,64 @@
 #!/usr/bin/env bash
 
+use_icons=true # Set to false to disable icons
 CONFIG="$HOME/.config/wofi/config"
 STYLE="$HOME/.config/wofi/style.css"
 
 wofi_command="wofi --show dmenu
-              --conf ${CONFIG} --style ${STYLE} \
-              --width=600 --height=175 \
-              --cache-file=/dev/null \
-              --hide-scroll --no-actions \
-              --define=matching=fuzzy"
+--conf ${CONFIG} --style ${STYLE} \
+    --width=600 --height=300 \
+    --cache-file=/dev/null \
+    --hide-scroll --no-actions \
+    --define=matching=fuzzy"
 
-powermenu="   Powermenu"
-wifi="    Wi-Fi"
-bluetooth="  Bluetooth"
+# Entries
+if $use_icons; then
+    powermenu="   Powermenu"
+    wifi="  Wi-Fi"
+    bluetooth="  Bluetooth"
+    wallpaper="󰸉  Wallpaper"
+else
+    powermenu=" Powermenu"
+    wifi="Wi-Fi"
+    bluetooth=" Bluetooth"
+    wallpaper="Wallpaper"
+fi
 
 open_menu (){
-    options="$powermenu\n$wifi\n$bluetooth"
+    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper"
 
     chosen="$(echo -e "$options" | $wofi_command --prompt )"
     case $chosen in
         $powermenu)
             if [[ "$?" == 0 ]]; then
-                wofi-power-menu
+                notify-send "Opening Powermenu "
+                $HOME/.config/local/bin/wofi-power-menu
             else
                 exit
             fi
             ;;
         $wifi)
             if [[ "$?" == 0 ]]; then
-                ~/.config/local/bin/wofi-wifi-menu
+                notify-send "Opening Wi-Fi menu"
+                $HOME/.config/local/bin/wofi-wifi-menu
             else
                 exit
             fi
             ;;
         $bluetooth)
             if [[ "$?" == 0 ]]; then
-                 blueman-manager
-             else
-                 exit
+                notify-send "Opening Blueman-Manager"
+                blueman-manager
+            else
+                exit
+            fi
+            ;;
+        $wallpaper)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Wallpaper menu"
+                $HOME/.config/local/bin/wofi-wallpaper
+            else
+                exit
             fi
             ;;
     esac

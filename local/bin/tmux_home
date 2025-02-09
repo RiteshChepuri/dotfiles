@@ -1,6 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if tmux list-sessions &>/dev/null; then
+# Check if tmux is installed
+if ! command -v tmux >/dev/null 2>&1; then
+    echo "Error: tmux is not installed. Please install it and try again."
+    exit 1
+fi
+
+# Check if the 'ritesh' session exists
+if tmux has-session -t ritesh 2>/dev/null; then
     tmux attach -t ritesh
 else
     tmux new -s ritesh
