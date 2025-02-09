@@ -42,8 +42,8 @@ vim.keymap.set({ "n", "x" }, "L", "g_")
 -- Use Alt with h,j,k,l to navigate in insert mode without using Arrow keys
 vim.keymap.set("i", "<A-h>", "<Left>")
 vim.keymap.set("i", "<A-l>", "<Right>")
-vim.keymap.set("i", "<A-j>", "<Up>")
-vim.keymap.set("i", "<A-k>", "<Down>")
+vim.keymap.set("i", "<A-k>", "<Up>")
+vim.keymap.set("i", "<A-j>", "<Down>")
 
 -- next buffer
 vim.keymap.set("n", "b[", "<cmd>bprevious<cr>")
