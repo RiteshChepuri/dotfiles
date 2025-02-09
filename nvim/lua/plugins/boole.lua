@@ -6,7 +6,6 @@ return {
 			increment = "<C-a>",
 			decrement = "<C-x>",
 		},
-		-- NOTE: a lot of the toggles are taken from josh medeski
 		additions = {
 			{ "production", "development", "test", "sandbox" },
 			{ "let", "const" },
