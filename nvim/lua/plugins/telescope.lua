@@ -83,26 +83,26 @@ return {
 
 		-- Telescope
 		local builtin = require("telescope.builtin")
-		-- Find files
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-		-- Search for a word in workspace
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-		-- Search the word under cursor in workspace
-		vim.keymap.set("n", "<leader>fs", builtin.grep_string, {})
-		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
-		-- Search for assigned keymaps for current neovim config
-		vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
-		-- Search all the active buffers
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-		-- Searcg for all the commands in neovim
-		vim.keymap.set("n", "<leader>fc", builtin.commands, {})
-		-- Search for all git files respects .gitignore
-		vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
-		-- Search for all commits
-		vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
-		-- Search for all commits for current buffer
-		vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
-		-- Shows status for all the changed files
-		vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
+		-- -- Find files
+		-- vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+		-- -- Search for a word in workspace
+		-- vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+		-- -- Search the word under cursor in workspace
+		-- vim.keymap.set("n", "<leader>fs", builtin.grep_string, {})
+		-- vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
+		-- -- Search for assigned keymaps for current neovim config
+		-- vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
+		-- -- Search all the active buffers
+		-- vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+		-- -- Searcg for all the commands in neovim
+		-- vim.keymap.set("n", "<leader>fc", builtin.commands, {})
+		-- -- Search for all git files respects .gitignore
+		-- vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
+		-- -- Search for all commits
+		-- vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
+		-- -- Search for all commits for current buffer
+		-- vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, {})
+		-- -- Shows status for all the changed files
+		-- vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
 	end,
 }
