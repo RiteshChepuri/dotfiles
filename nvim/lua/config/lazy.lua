@@ -21,7 +21,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
+vim.api.nvim_create_user_command("GoToFile", function()
+	Snacks.picker.files()
+end, { nargs = 0 })
 
 require("config.options")
 require("config.keymaps")
