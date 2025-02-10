@@ -106,5 +106,21 @@ return {
 			end,
 			desc = "Recent",
 		},
+		-- Undo tree
+		{
+			"<leader>u",
+			function()
+				Snacks.picker.undo()
+			end,
+			desc = "Undo History",
+		},
+		-- Icons
+		{
+			"<leader>fi",
+			function()
+				Snacks.picker.icons()
+			end,
+			desc = "Icons",
+		},
 	},
 }
