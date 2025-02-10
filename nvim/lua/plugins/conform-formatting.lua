@@ -1,13 +1,15 @@
 return {
-	"stevearc/conform.nvim",
-	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
-	config = function()
-		local conform = require("conform")
-
-		conform.setup({
-			formatters_by_ft = {
-				javascript = { "prettier" },
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = {},
+    config = function ()
+        require("conform").setup({
+            formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "isort", "black" },
+                rust = { "rustfmt", lsp_format = "fallback" },
+                javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
@@ -18,26 +20,15 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				graphql = { "prettier" },
-				lua = { "stylua" },
-				python = { "isort", "black" },
 				java = { "astyle", "google-java-format" },
 				bash = { "beautysh", "shellharden" },
-				rust = { "rustfmt" },
 				php = { "php_cs_fixer" },
-			},
+            },
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
 				timeout_ms = 1000,
 			},
-		})
-
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-			conform.format({
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			})
-		end, { desc = "Format file or range (in visual mode)" })
-	end,
+        })
+    end
 }
