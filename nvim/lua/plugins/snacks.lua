@@ -6,7 +6,29 @@ return {
 		bigfile = { enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			win = {
+				input = {
+					keys = {
+						["<c-j>"] = { "list_down", mode = { "i", "n" } },
+						["<c-k>"] = { "list_up", mode = { "i", "n" } },
+						["<Tab>"] = { "list_down", mode = { "i", "n" } },
+						["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
+						["<c-n>"] = { "select_and_next", mode = { "i", "n" } },
+					},
+				},
+				list = {
+					keys = {
+						["<c-j>"] = { "list_down", mode = { "n", "x" } },
+						["<Tab>"] = "list_down",
+						["<c-k>"] = { "list_up", mode = { "n", "x" } },
+						["<S-Tab>"] = "list_up",
+						["<c-n>"] = { "select_and_next", mode = { "i", "n" } },
+					},
+				},
+			},
+		},
 		scope = { enabled = true },
 		notifier = {
 			enabled = true,
