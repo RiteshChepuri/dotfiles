@@ -2,12 +2,14 @@
 abbr dc "cd .."
 abbr cls clear
 abbr rmf "rm -rf"
+abbr ch "chmod +x"
+abbr cf "chmod +x (ls | gum filter --limit 1 --header 'chmod +x')"
+abbr cx "chmod 644"
 
 # Neovim
 abbr v nvim
 abbr v. "nvim +GoToFile"
 abbr :GoToFile "nvim +GoToFile"
-abbr :GoToCommand "nvim +GoToCommand"
 
 # TMUX
 abbr ta "tmux a"
