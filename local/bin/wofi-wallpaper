@@ -58,12 +58,8 @@ generate_menu() {
 
 # Display wallpaper selection menu
 selected=$(generate_menu | wofi --show dmenu \
-    --cache-file /dev/null \
     --define "image-size=$THUMBNAIL_WIDTH,$THUMBNAIL_HEIGHT" \
-    --columns 4 \
-    --allow-images \
-    --insensitive \
-    --prompt "Select Wallpaper")
+    --conf $HOME/.config/wofi/wallpaper.conf )
 
 # Handle wallpaper selection and application
 if [[ -n "$selected" ]]; then
