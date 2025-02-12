@@ -1,0 +1,11 @@
+key_up=Ctrl-k
+key_down=Ctrl-j
+key_left = Ctrl-h
+key_right = Ctrl-l
+key_exit = Ctrl-c
+cache_file = /dev/null
+hide_scroll = true
+matching = fuzzy
+gtk_dark = true
+filter_rate=50
+dynamic_lines = true
