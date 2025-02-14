@@ -15,9 +15,9 @@ wofi_command="wofi --show dmenu
 # Entries
 if $use_icons; then
     powermenu="   Powermenu"
-    wifi="   Wi-Fi"
+    wifi="    Wi-Fi"
     bluetooth="   Bluetooth"
-    wallpaper="󰸉  Wallpaper"
+    wallpaper="󰸉   Wallpaper"
     web_launcher="󰜏  Web Launcher"
 else
     powermenu=" Powermenu"
@@ -30,7 +30,7 @@ fi
 open_menu (){
     options="$powermenu\n$wifi\n$bluetooth\n$wallpaper\n$web_launcher"
 
-    chosen="$(echo -e "$options" | $wofi_command --prompt )"
+    chosen="$(echo -e "$options" | $wofi_command --prompt "Choose a Menu to Open ")"
     case $chosen in
         $powermenu)
             if [[ "$?" == 0 ]]; then
