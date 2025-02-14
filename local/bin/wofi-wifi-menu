@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Scripts looks at the config and style files at $HOME/.config/wofi
 CONFIG="${WOFI_CONFIG:-$HOME/.config/wofi/config}"
 STYLE="${WOFI_STYLE:-$HOME/.config/wofi/style.css}"
 LOCK_FILE="/tmp/wofi_wifi.lock"
@@ -7,10 +8,10 @@ LOCK_FILE="/tmp/wofi_wifi.lock"
 # Function to map signal strength to bars
 wifi_signal_bar() {
     local SIGNAL=$1
-    if (( SIGNAL >= 75 )); then echo "█";  # Strongest
-    elif (( SIGNAL >= 50 )); then echo "▆";  # Good
-    elif (( SIGNAL >= 25 )); then echo "▄";  # Weak
-    else echo "▂";  # Very Weak
+    if (( SIGNAL >= 75 )); then echo "󰤨";  # Strongest
+    elif (( SIGNAL >= 50 )); then echo "󰤢";  # Good
+    elif (( SIGNAL >= 25 )); then echo "󰤟";  # Weak
+    else echo "󰤯";  # Very Weak
     fi
 }
 
@@ -72,7 +73,7 @@ WIFI_LIST=$(cat "$SAVED_CONNECTED_LIST" "$SAVED_LIST" "$NEW_LIST")
 rm -f "$SAVED_CONNECTED_LIST" "$SAVED_LIST" "$NEW_LIST"
 
 # Display menu
-CHENTRY=$(echo -e "$WIFI_LIST" | uniq -u | wofi -d --conf "${CONFIG}" --style "${STYLE}")
+CHENTRY=$(echo -e "$WIFI_LIST" | uniq -u | wofi -d --conf "${CONFIG}" --style "${STYLE}" --prompt "Select Wi-Fi Network" )
 
 # Extract SSID
 CHSSID=$(echo "$CHENTRY" | awk '{print $3}')
