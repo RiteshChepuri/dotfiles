@@ -42,6 +42,8 @@ open_menu() {
     options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
     chosen=$(echo -e "$options" | timeout 10s $wofi_command --prompt "UP - $uptime")
 
+    [[ -z "$chosen" ]] && exit 0  # Exit if no selection is made
+
     case $chosen in
         "$shutdown")
             if confirm_action; then
@@ -61,7 +63,8 @@ open_menu() {
             command -v hyprlock &>/dev/null && hyprlock
             ;;
         "$suspend")
-            battery_level=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo 100)
+            battery_path="/sys/class/power_supply/BAT0/capacity"
+            battery_level=$(cat "$battery_path" 2>/dev/null || echo 100)
             if [[ "$battery_level" -ge 5 ]]; then
                 command -v mpc &>/dev/null && mpc -q pause
                 command -v pulsemixer &>/dev/null && pulsemixer --mute
@@ -83,8 +86,8 @@ open_menu() {
 }
 
 # Prevent multiple instances
-if pgrep -x wofi > /dev/null; then
-    pkill wofi
+if pgrep -fx "wofi --show dmenu" > /dev/null; then
+    pkill -f "wofi --show dmenu"
 else
     open_menu
 fi
