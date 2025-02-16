@@ -23,8 +23,10 @@ return {
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
-			cmdline = {},
 		},
+		-- cmdline = {
+		-- 	sources = {},
+		-- },
 		completion = {
 			list = { selection = { preselect = false, auto_insert = true } },
 		},
