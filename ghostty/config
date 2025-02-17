@@ -38,8 +38,6 @@ window-height = 9999
 # visuals
 font-family = "JetBrainsMono"
 font-family-bold-italic = true
-# fallback (not needed?)
-# font-family = "Symbols Nerd Font Mono"
 font-size = 11
 macos-window-shadow = false
 mouse-hide-while-typing = true
