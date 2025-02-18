@@ -19,16 +19,18 @@ if $use_icons; then
     bluetooth="   Bluetooth"
     wallpaper="󰸉   Wallpaper"
     web_launcher="󰜏  Web Launcher"
+    chat_gpt="ChatGPT"
 else
     powermenu=" Powermenu"
     wifi="Wi-Fi"
     bluetooth=" Bluetooth"
     wallpaper="Wallpaper"
     web_launcher="Web Launcher"
+    chat_gpt="ChatGPT"
 fi
 
 open_menu (){
-    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper\n$web_launcher"
+    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper\n$web_launcher\n$chat_gpt"
 
     chosen="$(echo -e "$options" | $wofi_command --prompt "Choose a Menu to Open ")"
     case $chosen in
@@ -68,6 +70,14 @@ open_menu (){
             if [[ "$?" == 0 ]]; then
                 notify-send "Opening Web Launcher"
                 $HOME/.config/local/bin/wofi-web-launcher
+            else
+                exit
+            fi
+            ;;
+        $chat_gpt)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening ChatGPT"
+                $HOME/.config/local/bin/wofi-chatgpt
             else
                 exit
             fi
