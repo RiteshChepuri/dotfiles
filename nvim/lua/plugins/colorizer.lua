@@ -9,7 +9,7 @@ return {
 					lowercase = true, -- name:lower(), highlight `blue` and `red`
 					camelcase = true, -- name, highlight `Blue` and `Red`
 					uppercase = false, -- name:upper(), highlight `BLUE` and `RED`
-					strip_digits = false, -- ignore names with digits,
+					strip_digits = true, -- ignore names with digits,
 					-- highlight `blue` and `red`, but not `blue3` and `red4`
 				},
 				-- Expects a table of color name to #RRGGBB value pairs.  # is optional
