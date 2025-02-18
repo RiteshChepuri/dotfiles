@@ -19,7 +19,7 @@ if $use_icons; then
     bluetooth="   Bluetooth"
     wallpaper="󰸉   Wallpaper"
     web_launcher="󰜏  Web Launcher"
-    chat_gpt="ChatGPT"
+    chat_gpt="󰭹  ChatGPT"
     youtube="   Youtube"
 else
     powermenu=" Powermenu"
