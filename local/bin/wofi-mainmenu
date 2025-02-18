@@ -20,6 +20,7 @@ if $use_icons; then
     wallpaper="󰸉   Wallpaper"
     web_launcher="󰜏  Web Launcher"
     chat_gpt="ChatGPT"
+    youtube="   Youtube"
 else
     powermenu=" Powermenu"
     wifi="Wi-Fi"
@@ -27,10 +28,11 @@ else
     wallpaper="Wallpaper"
     web_launcher="Web Launcher"
     chat_gpt="ChatGPT"
+    youtube="Youtube"
 fi
 
 open_menu (){
-    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper\n$web_launcher\n$chat_gpt"
+    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper\n$web_launcher\n$chat_gpt\n$youtube"
 
     chosen="$(echo -e "$options" | $wofi_command --prompt "Choose a Menu to Open ")"
     case $chosen in
@@ -78,6 +80,14 @@ open_menu (){
             if [[ "$?" == 0 ]]; then
                 notify-send "Opening ChatGPT"
                 $HOME/.config/local/bin/wofi-chatgpt
+            else
+                exit
+            fi
+            ;;
+        $youtube)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Youtube Search"
+                $HOME/.config/local/bin/wofi-youtube
             else
                 exit
             fi

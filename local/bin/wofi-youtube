@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Prompt user for a search query
+QUERY=$(wofi --dmenu --prompt --height 100 "Search YouTube")
+
+# Exit if no input
+[ -z "$QUERY" ] && exit
+
+# Format the query for a YouTube search URL
+SEARCH_URL="https://www.youtube.com/results?search_query=$(echo "$QUERY" | sed 's/ /+/g')"
+
+# Open in the default web browser
+xdg-open "$SEARCH_URL"
