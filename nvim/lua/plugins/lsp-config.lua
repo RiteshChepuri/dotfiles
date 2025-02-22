@@ -26,7 +26,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			local lspconfig = require("lspconfig")
 			local keymap = vim.keymap
 			local opts = { noremap = true, silent = true }
