@@ -1,7 +1,3 @@
--- Easy Escape
-vim.keymap.set("i", "jj", "<ESC>", { desc = "Better Escape" })
-vim.keymap.set("i", "<C-c>", "<ESC>", { desc = "Better Escape" })
-
 -- Open Line above or below
 vim.keymap.set("n", "<A-o>", "o<ESC>")
 vim.keymap.set("n", "<A-O>", "O<ESC>")
