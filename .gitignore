@@ -95,3 +95,5 @@ Popcorn-Time
 configstore
 television
 Bitwarden CLI
+nvim/lazyvim.json
+yarn/global
