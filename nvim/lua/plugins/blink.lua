@@ -1,6 +1,7 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = "rafamadriz/friendly-snippets",
+	-- dependencies = "rafamadriz/friendly-snippets",
+	dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
 	version = "*",
 	opts = {
 		keymap = {
@@ -21,11 +22,66 @@ return {
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
+			providers = {
+				-- other sources
+				ripgrep = {
+					module = "blink-cmp-rg",
+					name = "Ripgrep",
+					opts = {
+						prefix_min_len = 3,
+						get_command = function(context, prefix)
+							return {
+								"rg",
+								"--no-config",
+								"--json",
+								"--word-regexp",
+								"--ignore-case",
+								"--",
+								prefix .. "[\\w_-]+",
+								vim.fs.root(0, ".git") or vim.fn.getcwd(),
+							}
+						end,
+						get_prefix = function(context)
+							return context.line:sub(1, context.cursor[2]):match("[%w_-]+$") or ""
+						end,
+					},
+				},
+			},
 		},
 		completion = {
 			list = { selection = { preselect = false, auto_insert = true } },
+			menu = {
+				enabled = true,
+				min_width = 15,
+				max_height = 10,
+				border = "single",
+				winblend = 0,
+				winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
+				-- Keep the cursor X lines away from the top/bottom of the window
+				scrolloff = 2,
+				-- Note that the gutter will be disabled when border ~= 'none'
+				scrollbar = true,
+				-- Which directions to show the window,
+				-- falling back to the next direction when there's not enough space
+				direction_priority = { "s", "n" },
+
+				-- Whether to automatically show the window when new completion items are available
+				auto_show = true,
+
+				-- Screen coordinates of the command line
+				cmdline_position = function()
+					if vim.g.ui_cmdline_pos ~= nil then
+						local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+						return { pos[1] - 1, pos[2] }
+					end
+					local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+					return { vim.o.lines - height, 0 }
+				end,
+			},
+			documentation = { window = { border = "single" } },
 		},
+		signature = { window = { border = "single" } },
 	},
 	opts_extend = { "sources.default" },
 }
