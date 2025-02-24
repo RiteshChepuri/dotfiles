@@ -49,7 +49,7 @@ return {
 
 				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- previous diagnostics
 
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- rename
+				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- next diagnostics
 			end
 
 			-- configure emmet language server
