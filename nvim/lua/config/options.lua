@@ -42,7 +42,7 @@ vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
 -- cursor line
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
