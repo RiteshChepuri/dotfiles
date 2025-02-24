@@ -22,32 +22,7 @@ return {
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
-			providers = {
-				-- other sources
-				ripgrep = {
-					module = "blink-cmp-rg",
-					name = "Ripgrep",
-					opts = {
-						prefix_min_len = 3,
-						get_command = function(context, prefix)
-							return {
-								"rg",
-								"--no-config",
-								"--json",
-								"--word-regexp",
-								"--ignore-case",
-								"--",
-								prefix .. "[\\w_-]+",
-								vim.fs.root(0, ".git") or vim.fn.getcwd(),
-							}
-						end,
-						get_prefix = function(context)
-							return context.line:sub(1, context.cursor[2]):match("[%w_-]+$") or ""
-						end,
-					},
-				},
-			},
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
 		completion = {
 			list = { selection = { preselect = false, auto_insert = true } },
