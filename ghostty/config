@@ -63,6 +63,7 @@ clipboard-write = "allow"
 # Some useful encoded characters:
 # \x0a = Enter/Return
 # \x1b = Esc
+# \x09 = Tab
 # \x02 = <C-b> (tmux prefix)
 # \x3a = :
 # \x47 = G
@@ -118,3 +119,5 @@ keybind = alt+right_bracket=text:\x02n
 # Split tmux pane for 25 % horizontally
 keybind = alt+y=text:\x02y
 
+# Open tmux copy plugin
+keybind = alt+l=text:\x02\x09
