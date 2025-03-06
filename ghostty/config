@@ -47,7 +47,7 @@ window-padding-x = 6
 window-padding-y = 3
 background-opacity = 0.80
 background-blur = true
-fullscreen = true
+# fullscreen = true
 
 ###############
 ## clipboard ##
