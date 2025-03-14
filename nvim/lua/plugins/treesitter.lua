@@ -33,6 +33,7 @@ return {
 					"fish",
 					"java",
 					"php",
+					"astro",
 				},
 				incremental_selection = {
 					enable = true,
