@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id $HOME/.config/local/bin/volume_mut
 bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/.config/local/bin/brightness-up
 bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/.config/local/bin/brightness-down
 
-# Sreen brightness controls
+# playback/Music controls
 bindsym XF86AudioNext exec --no-startup-id $HOME/.config/local/bin/player-next
 bindsym XF86AudioPause exec --no-startup-id $HOME/.config/local/bin/player-pause-play
 bindsym XF86AudioPlay exec --no-startup-id $HOME/.config/local/bin/player-pause-play
@@ -76,8 +76,10 @@ bindsym $mod+Shift+q kill
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+# Open rofi menu
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
+# open powermenu
 bindsym $mod+Shift+e exec --no-startup-id rofi-powermenu
 
 bindsym $mod+v exec --no-startup-id CM_LAUNCHER=rofi clipmenu
@@ -189,7 +191,7 @@ mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
-        bindsym resize grow width 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -205,29 +207,38 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# for mirroring and only main monitor
 exec_always xrandr --output HDMI-1 --same-as eDP-1 --set audio on
 
+# run compositor for transparency
 exec_always picom
 
+# open ghostty on startup and assign ws1
 for_window [class="ghostty"] move container to workspace 1
 exec --no-startup-id ghostty
 
+# open zen browser on startup and assign ws2
 for_window [class="zen"] move container to workspace 2
 exec --no-startup-id zen-browser
 
+# Set wallpaper with feh
 exec_always feh --bg-fill ~/.config/wallpapers/fog_in_the_forest_with_trees_and_fog.jpg
 
+# set window borders to zero
 for_window [class="^.*"] border pixel 0
-
 default_border pixel 0
 
+# start dunst daemon
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
+# bind print to Screenshot
 bindsym Print exec maim --select "$HOME/Pictures/Screenshots/$(date).png"
 
+# color picker within i3wm
 bindsym $mod+c exec --no-startup-id "xcolor | xclip -selection clipboard"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
+# polybar startup
 exec --no-startup-id $HOME/.config/polybar/launch.sh
