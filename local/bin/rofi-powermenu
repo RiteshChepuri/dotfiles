@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+# Power Menu
+
+# System Info
+uptime=$(uptime -p | sed 's/up //')
+
+# Options
+options=(
+    " Lock"
+    " Suspend"
+    " Logout"
+    " Reboot"
+    " Shutdown"
+)
+
+# Rofi Command
+rofi_cmd() {
+    rofi -dmenu \
+        -p "Uptime: $uptime" \
+        -mesg "Select an action:" \
+        -theme-str 'window {location: center; anchor: center; width: 350px;}'
+}
+
+# Confirmation Prompt
+confirm_cmd() {
+    echo -e " Yes\n No" | rofi -dmenu -p "Confirmation" -mesg "Are you sure?"
+}
+
+# Send Notification
+notify() {
+    command -v notify-send &>/dev/null && notify-send "Power Menu" "$1"
+}
+
+# Execute Commands
+execute_cmd() {
+    case $1 in
+        "Lock")
+            if command -v betterlockscreen &>/dev/null; then
+                betterlockscreen -l
+            elif command -v i3lock &>/dev/null; then
+                i3lock
+            else
+                notify "Lock command not found!"
+                exit 1
+            fi
+            notify "Screen locked."
+            ;;
+        "Suspend")
+            systemctl suspend && notify "System suspended."
+            ;;
+        "Logout")
+            case $DESKTOP_SESSION in
+                openbox) openbox --exit ;;
+                bspwm) bspc quit ;;
+                i3) i3-msg exit ;;
+                plasma) qdbus org.kde.ksmserver /KSMServer logout 0 0 0 ;;
+                *) notify "Unsupported session: $DESKTOP_SESSION" && exit 1 ;;
+            esac
+            notify "Logged out."
+            ;;
+        "Reboot")
+            systemctl reboot && notify "System rebooting..."
+            ;;
+        "Shutdown")
+            systemctl poweroff && notify "System shutting down..."
+            ;;
+    esac
+}
+
+# Main Execution
+chosen=$(printf "%s\n" "${options[@]}" | rofi_cmd)
+
+if [[ -n $chosen ]]; then
+    action=$(echo "$chosen" | awk '{print $2}')
+    confirm=$(confirm_cmd)
+
+    if [[ $confirm == " Yes" ]]; then
+        execute_cmd "$action"
+    else
+        notify "Operation canceled."
+        exit 0
+    fi
+fi
