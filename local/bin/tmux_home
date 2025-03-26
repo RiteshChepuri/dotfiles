@@ -6,9 +6,9 @@ if ! command -v tmux >/dev/null 2>&1; then
     exit 1
 fi
 
-# Check if the 'ritesh' session exists
-if tmux has-session -t ritesh 2>/dev/null; then
-    tmux attach -t ritesh
+# Check if the 'rjay' session exists
+if tmux has-session -t rjay 2>/dev/null; then
+    tmux attach -t rjay
 else
-    tmux new -s ritesh
+    tmux new -s rjay
 fi
