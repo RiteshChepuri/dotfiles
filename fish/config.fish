@@ -14,7 +14,4 @@ starship init fish | source
 # Intialize zoxide
 zoxide init fish | source
 
-# env paths
-fish_add_path -m ~/.local/share/gem/ruby/3.2.0/bin
-fish_add_path -m ~/.config/local/bin
-fish_add_path -m /usr/local/go/bin
+fish_add_path -g ~/.config/local/bin/
