@@ -1,0 +1,81 @@
+#!/bin/sh
+
+# ┌─┐┌─┐┬─┐┌─┐┌─┐┌┐┌┌─┐┬ ┬┌─┐┌┬┐
+# └─┐│  ├┬┘├┤ ├┤ │││└─┐├─┤│ │ │
+# └─┘└─┘┴└─└─┘└─┘┘└┘└─┘┴ ┴└─┘ ┴
+
+# author	Sankalp
+# github	S4NKALP
+
+# Ensure dependencies are available
+command -v xrandr >/dev/null 2>&1 || { notify-send "Error" "xrandr not found"; exit 1; }
+command -v rofi >/dev/null 2>&1 || { notify-send "Error" "rofi not found"; exit 1; }
+
+# Rofi config path
+roficonfig=~/.config/rofi/config.rasi
+
+# Detect connected screens
+screens=($(xrandr --query | awk '/ connected/{print $1}'))
+screen1=${screens[0]}
+screen2=${screens[1]}
+
+# Display options
+Laptop="   Only Laptop Screen"
+Monitor=" 󰍹  Only External Monitor"
+Dualscreen_right=" 󰍹   Dual Screen Right"
+Dualscreen_left="  󰍹  Dual Screen Left"
+Mirror=" 󰍹 🔄 Mirror Screens"
+rofiopt="$Laptop\n$Monitor\n$Dualscreen_right\n$Dualscreen_left\n$Mirror"
+
+# Ensure at least one external monitor exists
+if [ ${#screens[@]} -lt 2 ]; then
+  notify-send "Error" "Only one display detected."
+  exit 1
+fi
+
+# Rofi menu
+rofi=$(printf "$rofiopt" | rofi -config "$roficonfig" -dmenu -i -p "Choose Display Mode")
+
+# Exit if no option is selected
+[ -z "$rofi" ] && exit
+
+# Reload WM (bspwm, awesomewm, i3, etc.)
+reload() {
+  [ -n "$(pgrep bspwm)" ] && bspc wm -r
+  [ -n "$(pgrep awesome)" ] && echo 'awesome.restart()' | awesome-client
+  [ -n "$(pgrep i3)" ] && i3-msg restart
+  [ -n "$(pgrep dwm)" ] && xdotool key super+shift+q && dwm >/dev/null 2>&1 &
+}
+
+# Apply chosen configuration
+case "$rofi" in
+  "$Laptop")
+    xrandr --output "$screen1" --auto --primary --output "$screen2" --off
+    reload
+    ;;
+
+  "$Monitor")
+    xrandr --output "$screen2" --auto --primary --output "$screen1" --off
+    reload
+    ;;
+
+  "$Dualscreen_right")
+    xrandr --output "$screen1" --auto --primary --output "$screen2" --right-of "$screen1" --auto
+    reload
+    ;;
+
+  "$Dualscreen_left")
+    xrandr --output "$screen1" --auto --primary --output "$screen2" --left-of "$screen1" --auto
+    reload
+    ;;
+
+  "$Mirror")
+    # Get the resolution of the primary screen
+    resolution=$(xrandr | awk '/\*/{print $1; exit}')
+    [ -z "$resolution" ] && resolution="1920x1080"
+
+    # Apply mirroring with the same resolution
+    xrandr --output "$screen1" --mode "$resolution" --primary --output "$screen2" --mode "$resolution" --same-as "$screen1"
+    reload
+    ;;
+esac
