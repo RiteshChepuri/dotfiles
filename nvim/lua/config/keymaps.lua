@@ -39,3 +39,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Close a buffer with A-e
 vim.keymap.set("n", "<A-e>", "<cmd>bd<cr>")
+
+-- Added a keybind for better deleting a word
+vim.keymap.set("n", "dw", "diw")
