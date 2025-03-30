@@ -32,13 +32,11 @@ vim.keymap.set("i", "<A-j>", "<Down>")
 -- next buffer
 vim.keymap.set("n", "b[", "<cmd>bprevious<cr>")
 vim.keymap.set("n", "b]", "<cmd>bnext<cr>")
+-- hello
 
 -- Shift text in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Close a buffer with A-e
-vim.keymap.set("n", "<A-e>", "<cmd>bd<cr>")
 
 -- Added a keybind for better deleting a word
 vim.keymap.set("n", "dw", "diw")
