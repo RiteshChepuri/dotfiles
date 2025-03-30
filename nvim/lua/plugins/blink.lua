@@ -1,7 +1,11 @@
 return {
 	"saghen/blink.cmp",
 	-- dependencies = "rafamadriz/friendly-snippets",
-	dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+	dependencies = {
+		{ "L3MON4D3/LuaSnip", version = "v2.*" },
+		{ "MahanRahmati/blink-nerdfont.nvim" },
+		{ "moyiz/blink-emoji.nvim" },
+	},
 	version = "*",
 	opts = {
 		keymap = {
@@ -16,13 +20,12 @@ return {
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 		},
-
 		appearance = {
 			use_nvim_cmp_as_default = true,
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "nerdfont", "emoji" },
 			providers = {
 				path = {
 					module = "blink.cmp.sources.path",
@@ -37,6 +40,18 @@ return {
 						show_hidden_files_by_default = true,
 					},
 				},
+				emoji = {
+					module = "blink-emoji",
+					name = "Emoji",
+					score_offset = 15, -- Tune by preference
+					opts = { insert = true }, -- Insert emoji (default) or complete its name
+				},
+				nerdfont = {
+					module = "blink-nerdfont",
+					name = "Nerd Fonts",
+					score_offset = 15, -- Tune by preference
+					opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+				},
 			},
 		},
 		completion = {
@@ -44,7 +59,7 @@ return {
 			menu = {
 				enabled = true,
 				min_width = 15,
-				max_height = 10,
+				max_height = 20,
 				border = "single",
 				winblend = 0,
 				winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
@@ -55,7 +70,7 @@ return {
 				-- Which directions to show the window,
 				-- falling back to the next direction when there's not enough space
 				direction_priority = { "s", "n" },
-
+				draw = { treesitter = { "lsp" } },
 				-- Whether to automatically show the window when new completion items are available
 				auto_show = true,
 
@@ -69,9 +84,16 @@ return {
 					return { vim.o.lines - height, 0 }
 				end,
 			},
-			documentation = { window = { border = "single" } },
+			documentation = {
+				window = { border = "single" },
+				auto_show = true,
+				auto_show_delay_ms = 0,
+			},
 		},
-		signature = { window = { border = "single" } },
+		signature = {
+			enabled = true,
+			window = { border = "single" },
+		},
 	},
 	opts_extend = { "sources.default" },
 }
