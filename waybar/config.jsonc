@@ -1,6 +1,6 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "top", // Waybar at top layer
+    "layer": "bottom", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 36, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
@@ -20,8 +20,7 @@
         "custom/power",
     ],
     //Modules configuration
-
     "include": [
-		"~/.config/waybar/modules.json"
-	]
+        "~/.config/waybar/modules.json"
+    ]
 }
