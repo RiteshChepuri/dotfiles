@@ -36,8 +36,8 @@ notify() {
 execute_cmd() {
     case $1 in
         "Lock")
-            if command -v i3lock-script &>/dev/null; then
-                i3lock-script
+            if command -v i3lock &>/dev/null; then
+                i3lock -i ~/.config/wallpapers/macos-1.jpg
             else
                 notify "Lock command not found!"
                 exit 1
@@ -49,10 +49,7 @@ execute_cmd() {
             ;;
         "Logout")
             case $DESKTOP_SESSION in
-                openbox) openbox --exit ;;
-                bspwm) bspc quit ;;
                 i3) i3-msg exit ;;
-                plasma) qdbus org.kde.ksmserver /KSMServer logout 0 0 0 ;;
                 *) notify "Unsupported session: $DESKTOP_SESSION" && exit 1 ;;
             esac
             notify "Logged out."
