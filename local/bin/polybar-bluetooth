@@ -1,112 +1,62 @@
+# from
+# https://github.com/mbvissers/polybar-bluetooth-module/blob/master/polybar-scripts/system-bluetooth-bluetoothctl/system-bluetooth-bluetoothctl.sh
 #!/bin/sh
 
-log_file="/tmp/bluetooth_monitor.log"
-
-# Helper function for logging
-log() {
-  echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$log_file"
-}
-
-# Send desktop notifications (requires 'notify-send' from libnotify package)
-notify() {
-  if command -v notify-send >/dev/null 2>&1; then
-    notify-send "$1" "$2"
-  fi
-}
-
-# Bluetooth status printer
 bluetooth_print() {
-  last_output=""
+    bluetoothctl | while read -r; do
+        if [ "$(systemctl is-active "bluetooth.service")" = "active" ]; then
+            printf '#1'
 
-  # Continuous monitoring of Bluetooth changes
-  bluetoothctl monitor | while read -r; do
-    # Check if Bluetooth is active and powered on
-    if [ "$(systemctl is-active bluetooth.service)" = "active" ] && bluetoothctl show --brief | grep -q "Powered: yes"; then
-      devices_paired=$(bluetoothctl devices | cut -d ' ' -f 2)
-      output="%{F#81A1C1}" # Default: Bluetooth on, no connection
-      connected="no"
-      min_battery=101
-      device_name=""
+            devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
+            counter=0
 
-      for device in $devices_paired; do
-        device_info=$(bluetoothctl info "$device")
+            for device in $devices_paired; do
+                device_info=$(bluetoothctl info "$device")
 
-        # Check for connected devices
-        if echo "$device_info" | grep -q "Connected: yes"; then
-          alias=$(echo "$device_info" | grep "Alias" | cut -d ' ' -f 2-)
+                if echo "$device_info" | grep -q "Connected: yes"; then
+                    device_alias=$(echo "$device_info" | grep "Alias" | cut -d ' ' -f 2-)
 
-          # Get battery percentage if available
-          battery=$(echo "$device_info" | grep "Battery Percentage" | awk '{print $3}')
-          [ -z "$battery" ] && battery="N/A"
+                    if [ $counter -gt 0 ]; then
+                        printf ", %s" "$device_alias"
+                    else
+                        printf " %s" "$device_alias"
+                    fi
 
-          # Track the lowest battery for alerts
-          if [ "$battery" != "N/A" ] && [ "$battery" -lt "$min_battery" ]; then
-            min_battery=$battery
-            device_name="$alias"
-          fi
+                    counter=$((counter + 1))
+                fi
+            done
 
-          # Handle multiple connected devices
-          if [ "$connected" = "yes" ]; then
-            output="%{F#81A1C1} %{F-}Multiple Devices"
-            log "Multiple devices connected."
-            break
-          else
-            output="%{F#81A1C1} %{F-}$alias ($battery%)"
-            connected="yes"
-            log "Connected: $alias ($battery%)"
-          fi
+            printf '\n'
+        else
+            echo "#2"
         fi
-      done
-
-      # Low battery warning if under 20%
-      if [ "$min_battery" -lt 20 ] && [ "$min_battery" -ne 101 ]; then
-        notify "Low Battery Alert" "$device_name is at $min_battery% battery."
-        log "Low battery warning: $device_name - $min_battery%"
-      fi
-
-    else
-      output="%{F#808B96}" # Bluetooth off
-      log "Bluetooth is off."
-    fi
-
-    # Update output only if it changes
-    [ "$last_output" != "$output" ] && echo "$output"
-    last_output="$output"
-  done
+    done
 }
 
-# Toggle Bluetooth on/off
 bluetooth_toggle() {
-  if bluetoothctl show --brief | grep -q "Powered: no"; then
-    log "Enabling Bluetooth..."
-    notify "Bluetooth" "Turning on Bluetooth..."
-    bluetoothctl power on > /dev/null
-    sleep 1
+    if bluetoothctl show | grep -q "Powered: no"; then
+        bluetoothctl power on >> /dev/null
+        sleep 1
 
-    # Connect to trusted devices
-    bluetoothctl devices | cut -d ' ' -f 2 | while read -r device; do
-      if bluetoothctl info "$device" | grep -q "Trusted: yes"; then
-        bluetoothctl connect "$device" > /dev/null
-        log "Connected to trusted device: $device"
-        notify "Bluetooth" "Connected to $(bluetoothctl info "$device" | grep 'Alias' | cut -d ' ' -f 2-)"
-      fi
-    done
-  else
-    log "Disabling Bluetooth..."
-    notify "Bluetooth" "Turning off Bluetooth..."
+        devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
+        echo "$devices_paired" | while read -r line; do
+            bluetoothctl connect "$line" >> /dev/null
+        done
+    else
+        devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
+        echo "$devices_paired" | while read -r line; do
+            bluetoothctl disconnect "$line" >> /dev/null
+        done
 
-    # Disconnect all devices
-    bluetoothctl devices | cut -d ' ' -f 2 | while read -r device; do
-      bluetoothctl disconnect "$device" > /dev/null
-      log "Disconnected from: $device"
-    done
-    bluetoothctl power off > /dev/null
-  fi
+        bluetoothctl power off >> /dev/null
+    fi
 }
 
-# Parse script arguments
 case "$1" in
-  --toggle) bluetooth_toggle ;;
-  --log) tail -f "$log_file" ;;
-  *) bluetooth_print ;;
+    --toggle)
+        bluetooth_toggle
+        ;;
+    *)
+        bluetooth_print
+        ;;
 esac
