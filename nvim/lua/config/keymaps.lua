@@ -37,6 +37,3 @@ vim.keymap.set("n", "b]", "<cmd>bnext<cr>")
 -- Shift text in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Added a keybind for better deleting a word
-vim.keymap.set("n", "dw", "diw")
