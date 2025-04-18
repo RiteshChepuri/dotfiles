@@ -54,8 +54,8 @@ open_menu (){
             ;;
         $bluetooth)
             if [[ "$?" == 0 ]]; then
-                notify-send "Opening Blueman-Manager"
-                blueman-manager
+                notify-send "Opening Bluetooth Manager"
+                blueberry
             else
                 exit
             fi
@@ -68,7 +68,7 @@ open_menu (){
                 exit
             fi
             ;;
-        $browse)
+        $web_launcher)
             if [[ "$?" == 0 ]]; then
                 notify-send "Opening Web Launcher"
                 $HOME/.config/local/bin/wofi-web-launcher
