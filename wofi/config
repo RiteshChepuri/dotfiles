@@ -1,3 +1,4 @@
+# Wofi configuration to mimic macOS Spotlight
 key_up=Ctrl-k
 key_down=Ctrl-j
 key_left = Ctrl-h
@@ -9,3 +10,16 @@ matching = multi-contains
 gtk_dark = true
 filter_rate=50
 dynamic_lines = true
+
+width=600
+height=400
+location=center
+allow_markup=true
+no_actions=true
+halign=center
+orientation=vertical
+content_halign=center
+insensitive=true
+prompt=Search
+matching=contains
+insensitive=true
