@@ -10,8 +10,8 @@ CONFIG="${WOFI_CONFIG:-$HOME/.config/wofi/config}"
 STYLE="${WOFI_STYLE:-$HOME/.config/wofi/style.css}"
 
 # Wofi commands
-wofi_command="wofi --show dmenu --conf ${CONFIG} --style ${STYLE} --width=600 --height=255"
-wofi_confirm="wofi --show dmenu --conf ${CONFIG} --style ${STYLE} --width=600 --height=131"
+wofi_command="wofi --show dmenu --conf ${CONFIG} --style ${STYLE} --width=600 --height=365"
+wofi_confirm="wofi --show dmenu --conf ${CONFIG} --style ${STYLE} --width=600 --height=190"
 
 # Get system uptime
 uptime=$(uptime -p | cut -d' ' -f2-)
@@ -48,19 +48,23 @@ open_menu() {
         "$shutdown")
             if confirm_action; then
                 notify-send "System is shutting down..."
-                sleep 2
+                sleep 1
                 systemctl poweroff
             fi
             ;;
         "$reboot")
             if confirm_action; then
                 notify-send "Rebooting system..."
-                sleep 2
+                sleep 1
                 systemctl reboot
             fi
             ;;
         "$lock")
-            command -v hyprlock &>/dev/null && hyprlock
+            if confirm_action; then
+                notify-send "Locking system..."
+                sleep 1
+                command -v hyprlock &>/dev/null && hyprlock
+            fi
             ;;
         "$suspend")
             battery_path="/sys/class/power_supply/BAT0/capacity"
@@ -69,7 +73,7 @@ open_menu() {
                 command -v mpc &>/dev/null && mpc -q pause
                 command -v pulsemixer &>/dev/null && pulsemixer --mute
                 notify-send "System suspending..."
-                sleep 2
+                sleep 1
                 systemctl suspend
             else
                 notify-send "Battery too low to suspend!" "Charge your device first."
@@ -78,7 +82,7 @@ open_menu() {
         "$logout")
             if confirm_action; then
                 notify-send "Logging out..."
-                sleep 2
+                sleep 1
                 command -v hyprctl &>/dev/null && hyprctl dispatch exit 0
             fi
             ;;

@@ -7,7 +7,7 @@ STYLE="$HOME/.config/wofi/style.css"
 
 wofi_command="wofi --show dmenu
     --conf ${CONFIG} --style ${STYLE} \
-    --width=600 --height=335 \
+    --width=600 --height=480 \
     --halign=center \
     --content_halign=center \
     --valign=center"
