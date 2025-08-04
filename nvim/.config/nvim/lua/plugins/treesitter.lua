@@ -35,7 +35,6 @@ return {
                     "php",
                     "astro",
                     "regex",
-                    "latex",
                     "norg",
                     "scss",
                     "svelte",
