@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Check if pamixer is installed
+if ! command -v pamixer &> /dev/null; then
+    echo "pamixer could not be found. Please install it first."
+    exit 1
+fi
+
+# Toggle mute state
+pamixer --toggle-mute
+
+# Get the current volume level and mute state
+MUTED=$(pamixer --get-mute)
+VOLUME=$(pamixer --get-volume)
+
+# Provide different notifications based on the mute state
+if [ "$MUTED" = "true" ]; then
+    # Show muted notification
+    dunstify --replace=11111 "Muted" --icon=volume-mute --urgency=low
+else
+    # Show unmuted notification
+    dunstify --replace=11111 "Unmuted" --icon=volume-up --urgency=low
+fi

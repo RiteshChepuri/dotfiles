@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+paplay $HOME/.config/local/share/sounds/notification-alert.ogg

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Check if playerctl is installed
+if ! command -v playerctl &> /dev/null; then
+    dunstify --replace=99999 --icon=dialog-error --urgency=critical "Error" "playerctl is not installed!"
+    exit 1
+fi
+
+# Check if playerctl is controlling a player
+if ! playerctl status &> /dev/null; then
+    dunstify --replace=99999 --icon=dialog-warning --urgency=low "No Player" "No media player found or not playing."
+    exit 1
+fi
+
+# Get current track title
+track_title=$(playerctl metadata --format '{{ title }}')
+
+# If no track title is found, set to unknown
+if [ -z "$track_title" ]; then
+    track_title="Unknown Track"
+fi
+
+# Log the current action
+echo "$(date) - Previous Track: $track_title" >> ~/.playerctl_log
+
+# Check if the user wants to toggle play/pause
+if [ "$1" == "toggle" ]; then
+    # Toggle play/pause
+    playerctl play-pause
+    dunstify --replace=11111 --icon=media-play-pause --urgency=normal "Play/Pause Toggled" "The media has been toggled to play/pause."
+    exit 0
+fi
+
+# Run the command to skip to the previous track
+playerctl previous
+
+# Display the notification with track info
+dunstify --replace=11111 --icon=player-previous --urgency=normal "Previous Track" "Now playing: $track_title"
+
+# Optional: Customizable delay (default to 2 seconds if not provided)
+delay="${2:-2}"
+sleep $delay

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Prompt for input using Wofi
+query=$(wofi --dmenu --prompt "ChatGPT Search" --width 600 --height 200)
+
+# If query is empty, exit
+[ -z "$query" ] && exit
+
+# URL encode the query
+encoded_query=$(echo "$query" | jq -sRr @uri)
+
+# Open ChatGPT search in the browser
+xdg-open "https://chat.openai.com/?q=$encoded_query"

@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+use_icons=true # Set to false to disable icons
+# Files for wofi config and styling
+CONFIG="$HOME/.config/wofi/config"
+STYLE="$HOME/.config/wofi/style.css"
+
+wofi_command="wofi --show dmenu
+    --conf ${CONFIG} --style ${STYLE} \
+    --width=600 --height=480 \
+    --halign=center \
+    --content_halign=center \
+    --valign=center"
+
+# Entries
+if $use_icons; then
+    powermenu="   Powermenu"
+    wifi="    Wi-Fi"
+    bluetooth="   Bluetooth"
+    wallpaper="󰸉   Wallpaper"
+    web_launcher="󰜏  Web Launcher"
+    chat_gpt="󰭹  ChatGPT"
+    youtube="   Youtube"
+else
+    powermenu=" Powermenu"
+    wifi="Wi-Fi"
+    bluetooth=" Bluetooth"
+    wallpaper="Wallpaper"
+    web_launcher="Web Launcher"
+    chat_gpt="ChatGPT"
+    youtube="Youtube"
+fi
+
+open_menu (){
+    options="$powermenu\n$wifi\n$bluetooth\n$wallpaper\n$web_launcher\n$chat_gpt\n$youtube"
+
+    chosen="$(echo -e "$options" | $wofi_command --prompt "Choose a Menu to Open ")"
+    case $chosen in
+        $powermenu)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Powermenu "
+                $HOME/.config/local/bin/wofi-power-menu
+            else
+                exit
+            fi
+            ;;
+        $wifi)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Wi-Fi menu"
+                $HOME/.config/local/bin/wofi-wifi-menu
+            else
+                exit
+            fi
+            ;;
+        $bluetooth)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Bluetooth Manager"
+                blueberry
+            else
+                exit
+            fi
+            ;;
+        $wallpaper)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Wallpaper menu"
+                $HOME/.config/local/bin/wofi-wallpaper
+            else
+                exit
+            fi
+            ;;
+        $web_launcher)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Web Launcher"
+                $HOME/.config/local/bin/wofi-web-launcher
+            else
+                exit
+            fi
+            ;;
+        $chat_gpt)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening ChatGPT"
+                $HOME/.config/local/bin/wofi-chatgpt
+            else
+                exit
+            fi
+            ;;
+        $youtube)
+            if [[ "$?" == 0 ]]; then
+                notify-send "Opening Youtube Search"
+                $HOME/.config/local/bin/wofi-youtube
+            else
+                exit
+            fi
+            ;;
+    esac
+}
+
+if [[ ! `pidof wofi` ]]; then
+    open_menu
+else
+    pkill wofi
+fi

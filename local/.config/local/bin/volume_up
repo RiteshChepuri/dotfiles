@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Check if pamixer is installed
+if ! command -v pamixer &> /dev/null; then
+    echo "pamixer could not be found. Please install it first."
+    exit 1
+fi
+
+# Check if the volume is muted
+MUTED=$(pamixer --get-mute)
+
+# Increase volume by 5% and unmute if muted
+if [[ "$MUTED" == "true" ]]; then
+    pamixer --unmute
+    dunstify --replace=11111 "Unmuted" --icon=volume-up
+fi
+
+pamixer --increase 5
+
+# Get the current volume level
+VOLUME=$(pamixer --get-volume)
+
+# Ensure the volume is within the 0-100 range
+if [ "$VOLUME" -gt 100 ]; then
+    pamixer --set-volume 100
+    VOLUME=100
+elif [ "$VOLUME" -lt 0 ]; then
+    pamixer --set-volume 0
+    VOLUME=0
+fi
+
+# Choose color based on volume level
+if [ "$VOLUME" -lt 30 ]; then
+    COLOR="red"
+elif [ "$VOLUME" -lt 70 ]; then
+    COLOR="yellow"
+else
+    COLOR="green"
+fi
+
+# Delay for smooth notification
+sleep 0.5
+
+# Show a notification with the volume percentage and color
+dunstify --replace=11111 --hints=int:value:"$VOLUME" "Volume at $VOLUME%" --icon=volume-up --urgency=$COLOR

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+playerctl play-pause
+
+# Wait briefly to let playerctl update status
+sleep 0.1
+
+# Get updated status
+status=$(playerctl status)
+
+# Set icon and notification text accordingly
+if [ "$status" = "Playing" ]; then
+    icon="player-play"
+    message="Playing"
+elif [ "$status" = "Paused" ]; then
+    icon="player-pause"
+    message="Paused"
+else
+    icon="player-stop"
+    message="Stopped"
+fi
+
+
+song_title=$(playerctl metadata title 2>/dev/null)
+message="$message - $song_title"
+
+# Send notification
+dunstify --replace=11111 --hints=int:value:50 --icon="$icon" "$message"

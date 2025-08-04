@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Check if tmux is installed
+if ! command -v tmux >/dev/null 2>&1; then
+    echo "Error: tmux is not installed. Please install it and try again."
+    exit 1
+fi
+
+# Check if the 'rjay' session exists
+if tmux has-session -t rjay 2>/dev/null; then
+    tmux attach -t rjay
+else
+    tmux new -s rjay
+fi
