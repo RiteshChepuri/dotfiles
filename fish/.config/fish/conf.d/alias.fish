@@ -1,0 +1,6 @@
+alias 'tmux'='tmux -u'
+alias 'ls'='lsd'
+alias 'll'='ls -1'
+alias 'la'='ls -la'
+alias 'lt'='ls --tree'
+alias 'cat'='bat'
