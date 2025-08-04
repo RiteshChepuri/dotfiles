@@ -1,0 +1,123 @@
+# vim: set filetype=dosini
+#
+#  ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗████████╗██╗   ██╗
+# ██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
+# ██║  ███╗███████║██║   ██║███████╗   ██║      ██║    ╚████╔╝
+# ██║   ██║██╔══██║██║   ██║╚════██║   ██║      ██║     ╚██╔╝
+# ╚██████╔╝██║  ██║╚██████╔╝███████║   ██║      ██║      ██║
+#  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝      ╚═╝      ╚═╝
+#
+# Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
+# https://ghostty.org/docs/config/reference
+
+title = Ghostty
+
+###########
+## shell ##
+###########
+command = $HOME/.config/local/bin/tmux_home
+
+#################
+## UI / window ##
+#################
+bold-is-bright = true
+macos-titlebar-style = hidden
+macos-window-shadow = false
+mouse-hide-while-typing = true
+window-decoration = false
+window-padding-balance = true
+window-padding-x = 2
+window-padding-y = 4
+window-save-state = always
+window-theme = dark
+# maximise by default
+window-width = 9999
+window-height = 9999
+
+
+# visuals
+font-family = "JetBrainsMono"
+font-family-bold-italic = true
+font-size = 11
+macos-window-shadow = false
+mouse-hide-while-typing = true
+theme = catppuccin-mocha
+window-decoration = false
+window-padding-x = 6
+window-padding-y = 3
+background-opacity = 0.80
+background-blur = true
+# fullscreen = true
+
+###############
+## clipboard ##
+###############
+clipboard-read = "allow"
+clipboard-trim-trailing-spaces = true
+clipboard-write = "allow"
+
+
+#################
+## keybindings ##
+#################
+# Some useful encoded characters:
+# \x0a = Enter/Return
+# \x1b = Esc
+# \x09 = Tab
+# \x02 = <C-b> (tmux prefix)
+# \x3a = :
+# \x47 = G
+# \x6f = o
+# \x54 = T
+# \x46 = F
+# \x69 = i
+# \x6c = l
+# \x65 = e
+
+# Switch to TMUX window
+keybind = alt+one=text:\x021
+keybind = alt+two=text:\x022
+keybind = alt+three=text:\x023
+keybind = alt+four=text:\x024
+keybind = alt+five=text:\x025
+keybind = alt+six=text:\x026
+keybind = alt+seven=text:\x027
+keybind = alt+eight=text:\x028
+keybind = alt+nine=text:\x029
+
+# Open TMUX window
+keybind = alt+i=text:\x02c
+
+# Open GotoFile Prompt
+keybind = super+o=text:\x3a\x47\x6f\x54\x6f\x46\x69\x6c\x65\x0a
+
+# Open yazi
+keybind = alt+e=text:"yazi\x0a"
+
+# Split tmux pane horizontally
+keybind = alt+minus=text:\x02-
+# Split tmux pane vertically
+keybind = alt+equal=text:\x02%
+
+# Open lazygit
+keybind = alt+g=text:\x02g
+
+# Open sesh
+keybind = alt+p=text:\x02T
+
+# Open tmux fzf url
+keybind = alt+u=text:\x02u
+
+# Next TMUX session
+keybind = alt+tab=text:\x02)
+
+# previous window
+keybind = alt+left_bracket=text:\x02p
+# next window
+keybind = alt+right_bracket=text:\x02n
+
+# Split tmux pane for 25 % horizontally
+keybind = alt+y=text:\x02y
+
+# Open tmux copy plugin
+keybind = alt+l=text:\x02\x09
