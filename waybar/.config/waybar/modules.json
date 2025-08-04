@@ -1,0 +1,98 @@
+{
+  "custom/arch": {
+    "format": "󰣇",
+    "on-click": "wofi --show drun",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon} {volume}%  {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": "  Muted",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  },
+  "network": {
+    "format-wifi": "  {essid} ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+    "format-disconnected": "Disconnected ⚠",
+    "on-click": "~/.config/local/bin/wofi-wifi-menu"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{time}  {icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "custom/power": {
+    "format": "  ",
+    "on-click": "~/.config/local/bin/wofi-power-menu"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias} {num_connections}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "format-disabled": "",
+    "format-off": "",
+    "on-click": "blueberry",
+    "format-no-controller": ""
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
+  },
+  "clock": {
+    "format": " {:%I:%M %p | 󰃭 %e %B}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "on-click": "gnome-calendar",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#BAC2DE'><b>{}</b></span>",
+        "weekdays": "<span color='#89B4FA'><b>{}</b></span>",
+        "today": "<span color='#F38BA8'><b>{}</b></span>"
+      }
+    }
+  }
+}

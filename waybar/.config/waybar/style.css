@@ -1,0 +1,156 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 10px;
+    min-height: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+window#waybar {
+    background-color: rgba(18, 18, 28, 0.85);
+    /* Darker, slightly more opaque background */
+    color: #cdd6f4;
+}
+
+.modules-left,
+.modules-right {
+    border-radius: 20px;
+    margin: 1px 10px;
+    padding: 0 2px;
+}
+
+/* Common styling for modules */
+#custom-arch,
+#workspaces,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#backlight,
+#clock,
+#custom-power {
+    border: 1px solid #1a1b26;
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin: 1px 0px;
+    background: rgba(26, 27, 38, 0.8);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Workspace buttons */
+#workspaces button {
+    padding: 5px;
+    color: #a9b1d6;
+    /* Softer blue for inactive workspaces */
+}
+
+#workspaces button.active {
+    color: #7dcfff;
+    /* Soft cyan */
+    background: #24283b;
+    border: 1px solid #1a1b26;
+    border-radius: 20px;
+}
+
+#workspaces button:hover {
+    color: #c0caf5;
+    background: #414868;
+    border: 1px solid #1a1b26;
+    border-radius: 20px;
+}
+
+#workspaces button.urgent {
+    color: #1a1b26;
+    background: #f7768e;
+    /* Soft red for urgent */
+    border: 1px solid #f7768e;
+    border-radius: 20px;
+}
+
+/* Individual module colors - more cohesive palette */
+#custom-arch {
+    color: #7aa2f7;
+    /* Soft blue */
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#pulseaudio {
+    color: #bb9af7;
+    /* Soft purple */
+}
+
+#bluetooth {
+    color: #7dcfff;
+    /* Soft cyan */
+}
+
+#battery {
+    color: #9ece6a;
+    /* Soft green */
+}
+
+#battery.charging {
+    color: #e0af68;
+    /* Amber when charging */
+}
+
+#battery.warning:not(.charging) {
+    color: #ff9e64;
+    /* Soft orange for warning */
+}
+
+#battery.critical:not(.charging) {
+    color: #f7768e;
+    /* Soft red for critical */
+    animation: blink 1s infinite alternate;
+}
+
+#network {
+    color: #e0af68;
+    /* Soft amber */
+}
+
+#network.disconnected {
+    color: #f7768e;
+    /* Soft red when disconnected */
+}
+
+#backlight {
+    color: #ffcb6b;
+    /* Soft yellow */
+}
+
+#clock {
+    color: #bb9af7;
+    /* Soft purple */
+}
+
+#custom-power {
+    color: #f7768e;
+    /* Soft red */
+}
+
+/* Hover effects for all modules */
+#custom-arch:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover,
+#backlight:hover,
+#clock:hover,
+#custom-power:hover {
+    background: #24283b;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
