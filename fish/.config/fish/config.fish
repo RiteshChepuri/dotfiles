@@ -14,4 +14,5 @@ starship init fish | source
 # Intialize zoxide
 zoxide init fish | source
 
+# Add scripts to path
 fish_add_path -g ~/.config/local/bin/
