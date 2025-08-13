@@ -21,6 +21,7 @@ command = $HOME/.config/local/bin/tmux_home
 ## UI / window ##
 #################
 bold-is-bright = true
+desktop-notifications= false
 macos-titlebar-style = hidden
 macos-window-shadow = false
 mouse-hide-while-typing = true
@@ -30,13 +31,13 @@ window-padding-x = 2
 window-padding-y = 4
 window-save-state = always
 window-theme = dark
-# maximise by default
 window-width = 9999
 window-height = 9999
 
 
 # visuals
-font-family = "JetBrainsMono"
+# font-family = "Iosevka Nerd Font"
+font-family = "ZedMono Nerd Font Propo"
 font-family-bold-italic = true
 font-size = 11
 macos-window-shadow = false
@@ -45,9 +46,17 @@ theme = catppuccin-mocha
 window-decoration = false
 window-padding-x = 6
 window-padding-y = 3
-background-opacity = 0.80
+background-opacity = 0.6
 background-blur = true
-# fullscreen = true
+background-blur-radius = false
+fullscreen = false
+copy-on-select = true
+
+# Font and cursor settings
+cursor-style = block
+
+# theme = Solarized Dark Higher Contrast
+theme = solarized-osaka
 
 ###############
 ## clipboard ##
@@ -121,3 +130,5 @@ keybind = alt+y=text:\x02y
 
 # Open tmux copy plugin
 keybind = alt+l=text:\x02\x09
+
+keybind = alt+w=reload_config
