@@ -1,12 +1,11 @@
 return {
 	"saghen/blink.cmp",
-	-- dependencies = "rafamadriz/friendly-snippets",
 	dependencies = {
-		{ "L3MON4D3/LuaSnip", version = "v2.*" },
+		{ "rafamadriz/friendly-snippets" },
 		{ "MahanRahmati/blink-nerdfont.nvim" },
 		{ "moyiz/blink-emoji.nvim" },
 	},
-	version = "*",
+	version = "1.*",
 	opts = {
 		keymap = {
 			preset = "none",
@@ -21,38 +20,7 @@ return {
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 		},
 		appearance = {
-			use_nvim_cmp_as_default = true,
 			nerd_font_variant = "mono",
-		},
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "nerdfont", "emoji" },
-			providers = {
-				path = {
-					module = "blink.cmp.sources.path",
-					score_offset = 3,
-					fallbacks = { "buffer" },
-					opts = {
-						trailing_slash = true,
-						label_trailing_slash = true,
-						get_cwd = function(context)
-							return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
-						end,
-						show_hidden_files_by_default = true,
-					},
-				},
-				emoji = {
-					module = "blink-emoji",
-					name = "Emoji",
-					score_offset = 15, -- Tune by preference
-					opts = { insert = true }, -- Insert emoji (default) or complete its name
-				},
-				nerdfont = {
-					module = "blink-nerdfont",
-					name = "Nerd Fonts",
-					score_offset = 15, -- Tune by preference
-					opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
-				},
-			},
 		},
 		completion = {
 			list = { selection = { preselect = false, auto_insert = true } },
@@ -94,6 +62,38 @@ return {
 			enabled = true,
 			window = { border = "single" },
 		},
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer", "nerdfont", "emoji" },
+			providers = {
+				path = {
+					module = "blink.cmp.sources.path",
+					score_offset = 3,
+					fallbacks = { "buffer" },
+					opts = {
+						trailing_slash = true,
+						label_trailing_slash = true,
+						get_cwd = function(context)
+							return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+						end,
+						show_hidden_files_by_default = true,
+					},
+				},
+				emoji = {
+					module = "blink-emoji",
+					name = "Emoji",
+					score_offset = 15, -- Tune by preference
+					opts = { insert = true }, -- Insert emoji (default) or complete its name
+				},
+				nerdfont = {
+					module = "blink-nerdfont",
+					name = "Nerd Fonts",
+					score_offset = 15, -- Tune by preference
+					opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+				},
+			},
+		},
+
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
 }

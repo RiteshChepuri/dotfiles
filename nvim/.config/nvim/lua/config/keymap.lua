@@ -23,17 +23,13 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set({ "n", "x", "v" }, "H", "^")
 vim.keymap.set({ "n", "x", "v" }, "L", "g_")
 
--- Use Alt with h,j,k,l to navigate in insert mode without using Arrow keys
-vim.keymap.set("i", "<A-h>", "<Left>")
-vim.keymap.set("i", "<A-l>", "<Right>")
-vim.keymap.set("i", "<A-k>", "<Up>")
-vim.keymap.set("i", "<A-j>", "<Down>")
-
 -- next buffer
 vim.keymap.set("n", "b[", "<cmd>bprevious<cr>")
 vim.keymap.set("n", "b]", "<cmd>bnext<cr>")
--- hello
 
 -- Shift text in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Escape with C-c
+vim.keymap.set("i", "<C-c>", "<Esc>")

@@ -34,16 +34,14 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		quickfile = { enabled = false },
+		quickfile = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = false },
 		words = { enabled = false },
 		dashboard = { enabled = false },
 		input = { enabled = false },
 		styles = {
-			notification = {
-				-- wo = { wrap = true } -- Wrap notifications
-			},
+			notification = {},
 		},
 	},
 	keys = {

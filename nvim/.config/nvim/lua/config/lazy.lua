@@ -15,31 +15,29 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+require("config.lsp")
+require("config.keymap")
+require("config.autocmd")
+require("config.options")
 
 vim.api.nvim_create_user_command("GoToFile", function()
 	Snacks.picker.files()
 end, { nargs = 0 })
 
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
-		-- import your plugins
 		{ import = "plugins" },
 	},
-	-- Configure any other settings here. See the documentation for more details.
-	-- colorscheme that will be used when installing plugins.
 	install = { colorscheme = { "habamax" } },
-	-- automatically check for plugin updates
 	checker = { enabled = false },
+	change_detection = {
+		enabled = false,
+		notify = false, -- get a notification when changes are found
+	},
 })
 
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme solarized-osaka]])
