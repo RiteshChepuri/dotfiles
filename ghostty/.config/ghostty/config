@@ -55,8 +55,7 @@ copy-on-select = true
 # Font and cursor settings
 cursor-style = block
 
-# theme = Solarized Dark Higher Contrast
-theme = solarized-osaka
+theme = Solarized Dark Higher Contrast
 
 ###############
 ## clipboard ##
@@ -130,5 +129,3 @@ keybind = alt+y=text:\x02y
 
 # Open tmux copy plugin
 keybind = alt+l=text:\x02\x09
-
-keybind = alt+w=reload_config

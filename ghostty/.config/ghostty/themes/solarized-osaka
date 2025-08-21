@@ -1,13 +1,9 @@
-# Background and transparency settings
 background = #0e242d
-
-# Color scheme (Solarized Osaka)
 foreground = #839496
 selection-foreground = #fdf6e3
 selection-background = #173642
 cursor-color = #839496
 
-# ANSI Colors (Solarized Osaka)
 palette = 0=#173642
 palette = 1=#de3532
 palette = 2=#859910
