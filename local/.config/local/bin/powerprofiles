@@ -1,0 +1,29 @@
+#!/bin/bash
+# Power Profile Switcher with wofi (highlight + icons)
+# Requires: power-profiles-daemon, wofi, notify-send
+
+# Get current active profile
+current=$(powerprofilesctl get)
+
+# Build a list with icons
+options=$(cat <<EOF
+⚡ performance
+   balanced
+󱤅  power-saver
+EOF
+)
+
+# Highlight the current profile
+highlighted=$(echo "$options" | sed "s/^.*$current.*/&       /")
+
+# Launch wofi
+chosen=$(echo "$highlighted" | wofi --dmenu --prompt "Power Profile:")
+
+# Extract the profile name (remove icon and spaces)
+profile=$(echo "$chosen" | awk '{print $2}')
+
+# If selection valid, apply it
+if [ -n "$profile" ]; then
+    powerprofilesctl set "$profile"
+    notify-send "Power Profile Changed" "Set to $profile ⚙️"
+fi
