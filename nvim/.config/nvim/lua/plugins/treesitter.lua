@@ -9,6 +9,18 @@ return {
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"lua",
+					"json",
+					"javascript",
+					"typescript",
+					"tsx",
+					"yaml",
+					"html",
+					"css",
+					"markdown",
+					"bash",
+					"gitignore",
+					"c",
+					"query",
 				},
 				auto_install = true,
 				sync_install = true,
