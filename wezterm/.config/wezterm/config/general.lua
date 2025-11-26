@@ -16,7 +16,8 @@ function M.apply(config)
 	config.enable_wayland = false
 	config.automatically_reload_config = true
 	config.disable_default_key_bindings = true
-	-- config.default_prog = { "tmux_home" }
+	config.default_prog = { "/usr/local/bin/tmux_home" }
+	--TODO: take an another look at default_prog path
 end
 
 return M
