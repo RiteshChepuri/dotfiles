@@ -63,7 +63,7 @@ return {
 			window = { border = "single" },
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "nerdfont", "emoji" },
+			default = { "lsp", "path", "snippets", "buffer", "nerdfont", "emoji", "lazydev" },
 			providers = {
 				path = {
 					module = "blink.cmp.sources.path",
@@ -90,10 +90,14 @@ return {
 					score_offset = 15, -- Tune by preference
 					opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
 				},
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					-- make lazydev completions top priority (see `:h blink.cmp`)
+					score_offset = 100,
+				},
 			},
 		},
-
-		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
 }
