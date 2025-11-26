@@ -4,7 +4,7 @@ local M = {}
 function M.apply(config)
 	config.font = wezterm.font("JetBrainsMono")
 	config.font_size = 10.0
-	config.color_scheme = "Catppuccin Mocha"
+	config.color_scheme = "Solarized (dark) (terminal.sexy)"
 	config.window_background_opacity = 0.75
 	config.adjust_window_size_when_changing_font_size = false
 	config.debug_key_events = false
