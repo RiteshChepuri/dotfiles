@@ -1,34 +1,44 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
+	{
+		"neovim/nvim-lspconfig",
+	},
+	{
 		"mason-org/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
 		"mason-org/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup({})
+		end,
 	},
-	opts = {
-		servers = {
-			lua_ls = {},
-			--INFO: add servers here
-		},
-	},
-	config = function(_, opts)
-		require("mason").setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					-- language servers
+					"lua_ls",
+					"ts_ls",
+					"marksman",
+					"html",
+					"cssls",
+					"tailwindcss",
+					"pyright",
+					"clangd",
+					-- formatter
+					"stylua",
+					"prettier",
+					"prettierd",
+					"rustfmt",
+					"beautysh",
+					"clang-format",
+					"isort",
+					"black",
 				},
-			},
-		})
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-			},
-		})
-
-		for server, config in pairs(opts.servers) do
-			vim.lsp.config(server, config)
-			vim.lsp.enable(server)
-		end
-	end,
+			})
+		end,
+	},
 }
