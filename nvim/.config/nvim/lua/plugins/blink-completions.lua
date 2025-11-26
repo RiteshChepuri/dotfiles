@@ -5,7 +5,7 @@ return {
 		{ "MahanRahmati/blink-nerdfont.nvim" },
 		{ "moyiz/blink-emoji.nvim" },
 	},
-	version = "1.*",
+	build = "cargo +nightly build --release",
 	opts = {
 		keymap = {
 			preset = "none",
