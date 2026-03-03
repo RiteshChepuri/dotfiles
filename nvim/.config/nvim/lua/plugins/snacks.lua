@@ -8,6 +8,11 @@ return {
 		indent = { enabled = true },
 		picker = {
 			enabled = true,
+			sources = {
+				files = { hidden = true },
+				grep = { hidden = true },
+				explorer = { hidden = true },
+			},
 			win = {
 				input = {
 					keys = {
