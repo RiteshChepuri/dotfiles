@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
- swww-daemon & sleep 0.1 && swww img $HOME/.config/wallpapers/sunlight.jpg
