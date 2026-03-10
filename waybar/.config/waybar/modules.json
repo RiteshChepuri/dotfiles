@@ -47,7 +47,7 @@
     "format-wifi": "  {essid} ",
     "format-ethernet": "{ipaddr}/{cidr} 󰈀",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "~/.config/local/bin/wofi-wifi-menu"
+    "on-click": "~/.config/local/bin/launch-wifi"
   },
   "battery": {
     "states": {
@@ -82,7 +82,7 @@
   "clock": {
     "format": " {:%I:%M %p | 󰃭 %e %B}",
     "tooltip-format": "<tt>{calendar}</tt>",
-    "on-click": "gnome-calendar",
+    "on-click": "~/.config/local/bin/min_calendar",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
