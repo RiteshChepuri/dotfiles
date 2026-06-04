@@ -56,7 +56,6 @@ return {
 				end)
 				map("n", "<leader>gg", gitsigns.stage_hunk)
 				map("n", "<leader>gx", gitsigns.reset_hunk)
-				map("n", "<leader>gz", gitsigns.undo_stage_hunk)
 				map("n", "<leader>gp", gitsigns.preview_hunk)
 			end,
 		})
